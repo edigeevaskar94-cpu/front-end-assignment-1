@@ -348,3 +348,135 @@ footer p {
         font-size: 2.2rem;
     }
 }
+
+
+
+
+
+
+
+
+/* 
+   BOOKING & CONTACTS PAGES
+*/
+
+.booking-intro,
+.contacts-intro {
+    text-align: center;
+    padding: 70px 5% 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.booking-intro h1,
+.contacts-intro h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.booking-intro p,
+.contacts-intro p {
+    font-size: 1.1rem;
+    color: #64748b;
+}
+
+.booking-section,
+.contacts-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 5% 80px;
+}
+
+/* Form Styles */
+
+.form-container {
+    max-width: 650px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 35px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-button {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+/* Contacts Layout */
+
+.contacts-section .contact-card {
+    width: 40%;
+}
+
+.contacts-section .contact-card h2,
+.contacts-section .contact-form-card h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.contacts-section .contact-card p {
+    margin-bottom: 15px;
+}
+
+.contacts-section .contact-form-card {
+    width: 55%;
+}
+
+/* Responsive Forms */
+
+@media (max-width: 800px) {
+    .contacts-section .contact-card,
+    .contacts-section .contact-form-card {
+        width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

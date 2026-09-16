@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DriveRent Astana - Booking</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header id="main-header">
+        <nav class="navigation">
+            <a href="index.html" class="logo">
+                Drive<span>Rent</span>
+            </a>
+
+            <div class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="cars.html">Cars</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="booking.html">Booking</a>
+                <a href="contacts.html">Contacts</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="booking-intro">
+            <h1>Book Your Car</h1>
+
+            <p>
+                Fill out the form below to reserve a vehicle. Our manager will 
+                contact you shortly to confirm your booking details.
+            </p>
+        </section>
+
+
+        <section class="booking-section">
+
+            <div class="form-container">
+                <form action="#" method="post" class="booking-form">
+
+                    <div class="form-group">
+                        <label for="car-select">Select Car *</label>
+                        <select id="car-select" name="car" required>
+                            <option value="">-- Choose a car --</option>
+                            <option value="camry">Toyota Camry (25,000 ₸ / day)</option>
+                            <option value="sonata">Hyundai Sonata (22,000 ₸ / day)</option>
+                            <option value="land-cruiser">Toyota Land Cruiser (50,000 ₸ / day)</option>
+                            <option value="rav4">Toyota RAV4 (30,000 ₸ / day)</option>
+                            <option value="tucson">Hyundai Tucson (28,000 ₸ / day)</option>
+                            <option value="k5">Kia K5 (24,000 ₸ / day)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="full-name">Full Name *</label>
+                        <input type="text" id="full-name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (700) 000-00-00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="example@mail.com">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pickup-date">Pick-up Date *</label>
+                            <input type="date" id="pickup-date" name="pickup_date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="return-date">Return Date *</label>
+                            <input type="date" id="return-date" name="return_date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Request</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Flight number, child seat requirement, etc."></textarea>
+                    </div>
+
+                    <button type="submit" class="button form-button">Submit Request</button>
+
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>DriveRent Astana</p>
+        <p>Team Members: Askar, Ermek, Nurislam</p>
+    </footer>
+
+</body>
+</html>
