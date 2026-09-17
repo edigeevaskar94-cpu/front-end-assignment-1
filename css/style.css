@@ -481,4 +481,139 @@ footer p {
     }
 }
 
-/* ABOUT PAGE */ .about-intro, .services-intro { text-align: center; padding: 70px 5% 40px; max-width: 900px; margin: 0 auto; } .about-intro h1, .services-intro h1 { font-size: 2.8rem; margin-bottom: 15px; } .about-intro p, .services-intro p { font-size: 1.1rem; color: #64748b; } .about-section, .team-section, .services-section, .price-section { max-width: 1200px; margin: 0 auto; padding: 20px 5% 70px; } .about-card { width: 31%; } .about-card h2 { margin-bottom: 15px; font-size: 1.4rem; } .team-section h2, .price-section h2 { text-align: center; font-size: 2rem; margin-bottom: 35px; } .team-card { width: 31%; text-align: center; } .team-card img { height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; } .team-card h3 { font-size: 1.3rem; margin-bottom: 10px; } /* SERVICES PAGE */ .service-card { width: 31%; } .service-card h2 { font-size: 1.4rem; margin-bottom: 12px; } /* PRICE TABLE */ .table-container { overflow-x: auto; } table { width: 100%; border-collapse: collapse; background-color: white; border: 1px solid #e5e7eb; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); } th, td { padding: 15px; text-align: left; border-bottom: 1px solid #e5e7eb; } th { background-color: #111827; color: white; } tr:hover { background-color: #f8fafc; } /* RESPONSIVE ABOUT & SERVICES */ @media (max-width: 900px) { .about-card, .team-card, .service-card { width: 47%; } } @media (max-width: 600px) { .about-intro h1, .services-intro h1 { font-size: 2.2rem; } .about-card, .team-card, .service-card { width: 100%; } th, td { padding: 10px; font-size: 0.9rem; } }
+/* ABOUT PAGE */
+
+.about-intro,
+.services-intro {
+    text-align: center;
+    padding: 70px 5% 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-intro h1,
+.services-intro h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.about-intro p,
+.services-intro p {
+    font-size: 1.1rem;
+    color: #64748b;
+}
+
+.about-section,
+.team-section,
+.services-section,
+.price-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 5% 70px;
+}
+
+.about-card {
+    width: 31%;
+}
+
+.about-card h2 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.team-section h2,
+.price-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 35px;
+}
+
+.team-card {
+    width: 31%;
+    text-align: center;
+}
+
+.team-card img {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.team-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+
+/* SERVICES PAGE */
+
+.service-card {
+    width: 31%;
+}
+
+.service-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+
+/* PRICE TABLE */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background-color: #111827;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+
+/* RESPONSIVE ABOUT & SERVICES */
+
+@media (max-width: 900px) {
+    .about-card,
+    .team-card,
+    .service-card {
+        width: 47%;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-intro h1,
+    .services-intro h1 {
+        font-size: 2.2rem;
+    }
+
+    .about-card,
+    .team-card,
+    .service-card {
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
