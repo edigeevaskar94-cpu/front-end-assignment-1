@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
+    background-color: #ffffff;
     color: #1f2937;
     line-height: 1.6;
 }
@@ -60,7 +60,7 @@ img {
 }
 
 .nav-menu a {
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1rem;
     transition: 0.3s;
 }
