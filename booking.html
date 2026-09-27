@@ -6,105 +6,355 @@
 
     <title>YachtRent Astana - Booking</title>
 
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Team CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <header id="main-header">
-        <nav class="navigation">
-            <a href="index.html" class="logo">
-                Yacht<span>Rent</span>
-            </a>
+<header id="main-header">
 
-            <div class="nav-menu">
+    <nav class="navbar navbar-expand-lg navigation" aria-label="Main navigation">
+
+        <a href="index.html" class="logo navbar-brand">
+            Yacht<span>Rent</span>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainMenu"
+                aria-controls="mainMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <!-- Navigation -->
+        <div class="collapse navbar-collapse nav-menu" id="mainMenu">
+
+            <div class="ms-lg-auto d-lg-flex gap-lg-4">
+
                 <a href="index.html">Home</a>
                 <a href="cars.html">Yachts</a>
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="booking.html">Booking</a>
                 <a href="contacts.html">Contacts</a>
+
             </div>
-        </nav>
-    </header>
+
+        </div>
+
+    </nav>
+
+</header>
 
 
-    <main>
+<main>
 
-        <section class="booking-intro">
-            <h1>Book Your Yacht</h1>
+    <!-- INTRO -->
+    <section class="booking-intro">
+
+        <h1>Book Your Yacht</h1>
+
+        <p>
+            Fill out the form below to reserve a luxury yacht.
+            Our manager will contact you shortly to confirm your booking details.
+        </p>
+
+    </section>
+
+
+    <!-- BOOTSTRAP GRID -->
+    <section class="booking-section">
+
+        <div class="container">
+
+            <div class="row g-4 justify-content-center">
+
+                <!-- LEFT COLUMN -->
+                <div class="col-12 col-md-5 col-lg-4">
+
+                    <article class="booking-info-card h-100">
+
+                        <h2>Booking Information</h2>
+
+                        <p>
+                            Choose one of our comfortable yachts
+                            and send us your booking request.
+                        </p>
+
+                        <ul>
+                            <li>Professional crew</li>
+                            <li>Comfortable cabins</li>
+                            <li>Flexible rental dates</li>
+                            <li>Yacht preparation before your trip</li>
+                        </ul>
+
+                        <div class="booking-card-buttons">
+
+                            <a href="cars.html"
+                               class="button btn btn-outline-primary">
+                                View Yachts
+                            </a>
+
+                            <a href="contacts.html"
+                               class="button btn btn-secondary">
+                                Contact Us
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- RIGHT COLUMN -->
+                <div class="col-12 col-md-7 col-lg-8">
+
+                    <div class="booking-form-card">
+
+                        <h2>Reservation Form</h2>
+
+                        <form action="#" method="post" class="booking-form">
+
+                            <!-- Yacht -->
+                            <div class="form-group">
+
+                                <label for="yacht-select">
+                                    Select Yacht *
+                                </label>
+
+                                <select id="yacht-select"
+                                        name="yacht"
+                                        required>
+
+                                    <option value="">
+                                        -- Choose a yacht --
+                                    </option>
+
+                                    <option value="ocean-pearl">
+                                        Ocean Pearl (120,000 ₸ / day)
+                                    </option>
+
+                                    <option value="sea-breeze">
+                                        Sea Breeze (150,000 ₸ / day)
+                                    </option>
+
+                                    <option value="royal-wave">
+                                        Royal Wave (200,000 ₸ / day)
+                                    </option>
+
+                                    <option value="blue-horizon">
+                                        Blue Horizon (170,000 ₸ / day)
+                                    </option>
+
+                                    <option value="silver-wave">
+                                        Silver Wave (145,000 ₸ / day)
+                                    </option>
+
+                                    <option value="sunset-dream">
+                                        Sunset Dream (130,000 ₸ / day)
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- Name -->
+                            <div class="form-group">
+
+                                <label for="full-name">
+                                    Full Name *
+                                </label>
+
+                                <input type="text"
+                                       id="full-name"
+                                       name="name"
+                                       placeholder="John Doe"
+                                       required>
+
+                            </div>
+
+
+                            <!-- Phone -->
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone Number *
+                                </label>
+
+                                <input type="tel"
+                                       id="phone"
+                                       name="phone"
+                                       placeholder="+7 (700) 000-00-00"
+                                       required>
+
+                            </div>
+
+
+                            <!-- Email -->
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <input type="email"
+                                       id="email"
+                                       name="email"
+                                       placeholder="example@mail.com">
+
+                            </div>
+
+
+                            <!-- Bootstrap row -->
+                            <div class="row">
+
+                                <div class="col-12 col-sm-6">
+
+                                    <div class="form-group">
+
+                                        <label for="pickup-date">
+                                            Charter Start Date *
+                                        </label>
+
+                                        <input type="date"
+                                               id="pickup-date"
+                                               name="pickup_date"
+                                               required>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-12 col-sm-6">
+
+                                    <div class="form-group">
+
+                                        <label for="return-date">
+                                            Charter End Date *
+                                        </label>
+
+                                        <input type="date"
+                                               id="return-date"
+                                               name="return_date"
+                                               required>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Additional request -->
+                            <div class="form-group">
+
+                                <label for="notes">
+                                    Additional Request
+                                </label>
+
+                                <textarea id="notes"
+                                          name="notes"
+                                          rows="4"
+                                          placeholder="Catering services, captain requirements, special event setup, etc."></textarea>
+
+                            </div>
+
+
+                            <button type="submit"
+                                    class="button btn btn-primary form-button">
+
+                                Submit Request
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RENTAL PRICES -->
+    <section class="container pb-5">
+
+        <div class="rental-prices">
+
+            <h2>Rental Prices</h2>
 
             <p>
-                Fill out the form below to reserve a luxury yacht. Our manager will 
-                contact you shortly to confirm your booking details.
+                Our yacht rental prices start from:
             </p>
-        </section>
 
+            <div class="list-group">
 
-        <section class="booking-section">
+                <div class="list-group-item">
+                    Ocean Pearl —
+                    <strong>120,000 ₸ / day</strong>
+                </div>
 
-            <div class="form-container">
-                <form action="#" method="post" class="booking-form">
+                <div class="list-group-item">
+                    Sea Breeze —
+                    <strong>150,000 ₸ / day</strong>
+                </div>
 
-                    <div class="form-group">
-                        <label for="yacht-select">Select Yacht *</label>
-                        <select id="yacht-select" name="yacht" required>
-                            <option value="">-- Choose a yacht --</option>
-                            <option value="ocean-pearl">Ocean Pearl (120,000 ₸ / day)</option>
-                            <option value="sea-breeze">Sea Breeze (150,000 ₸ / day)</option>
-                            <option value="royal-wave">Royal Wave (200,000 ₸ / day)</option>
-                            <option value="blue-horizon">Blue Horizon (170,000 ₸ / day)</option>
-                            <option value="silver-wave">Silver Wave (145,000 ₸ / day)</option>
-                            <option value="sunset-dream">Sunset Dream (130,000 ₸ / day)</option>
-                        </select>
-                    </div>
+                <div class="list-group-item">
+                    Blue Horizon —
+                    <strong>170,000 ₸ / day</strong>
+                </div>
 
-                    <div class="form-group">
-                        <label for="full-name">Full Name *</label>
-                        <input type="text" id="full-name" name="name" placeholder="John Doe" required>
-                    </div>
+                <div class="list-group-item">
+                    Royal Wave —
+                    <strong>200,000 ₸ / day</strong>
+                </div>
 
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+7 (700) 000-00-00" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="example@mail.com">
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="pickup-date">Charter Start Date *</label>
-                            <input type="date" id="pickup-date" name="pickup_date" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="return-date">Charter End Date *</label>
-                            <input type="date" id="return-date" name="return_date" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="notes">Additional Request</label>
-                        <textarea id="notes" name="notes" rows="4" placeholder="Catering services, captain requirements, special event setup, etc."></textarea>
-                    </div>
-
-                    <button type="submit" class="button form-button">Submit Request</button>
-
-                </form>
             </div>
 
-        </section>
+            <a href="contacts.html"
+               class="button btn btn-primary mt-3">
 
-    </main>
+                Ask a Question
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
 
 
-    <footer>
-        <p>YachtRent Astana</p>
-        <p>Team Members: Askar, Ermek, Nurislam</p>
-    </footer>
+<footer>
+
+    <p>YachtRent Astana</p>
+
+    <p>
+        Team Members: Askar, Yermek, Nurislam
+    </p>
+
+</footer>
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

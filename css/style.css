@@ -356,9 +356,15 @@ footer p {
 
 
 
-/* 
-   BOOKING & CONTACTS PAGES
-*/
+
+
+/* =========================================
+   ASSIGNMENT 3
+   BOOKING & CONTACTS
+   ========================================= */
+
+
+/* Intro */
 
 .booking-intro,
 .contacts-intro {
@@ -378,34 +384,89 @@ footer p {
 .contacts-intro p {
     font-size: 1.1rem;
     color: #64748b;
+    line-height: 1.6;
 }
+
+
+/* Sections */
 
 .booking-section,
 .contacts-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 5% 80px;
+    width: 100%;
+    padding: 20px 0 70px;
 }
 
-/* Form Styles */
 
-.form-container {
-    max-width: 650px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 35px;
-    border-radius: 12px;
+/* =========================================
+   BOOKING CARDS
+   ========================================= */
+
+.booking-info-card,
+.booking-form-card,
+.rental-prices,
+.contact-info-card,
+.contact-form-card {
+    background: #ffffff;
     border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
 }
+
+
+/* IMPORTANT:
+   These are NOT .card,
+   so old team CSS will not break Bootstrap.
+*/
+
+
+.booking-info-card h2,
+.booking-form-card h2,
+.rental-prices h2,
+.contact-info-card h2,
+.contact-form-card h2 {
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+
+/* Booking information */
+
+.booking-info-card p,
+.booking-info-card li {
+    line-height: 1.6;
+}
+
+.booking-info-card ul {
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+.booking-info-card li {
+    margin-bottom: 10px;
+}
+
+
+/* Buttons */
+
+.booking-card-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
 
 .form-group {
     margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
 }
 
 .form-group label {
+    display: block;
     font-weight: bold;
     margin-bottom: 8px;
     color: #374151;
@@ -420,6 +481,7 @@ footer p {
     border-radius: 8px;
     font-size: 1rem;
     font-family: Arial, sans-serif;
+    box-sizing: border-box;
     outline: none;
     transition: 0.3s;
 }
@@ -431,58 +493,146 @@ footer p {
     box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
 }
 
-.form-row {
-    display: flex;
-    gap: 20px;
-}
-
-.form-row .form-group {
-    flex: 1;
-}
-
 .form-button {
-    border: none;
-    cursor: pointer;
     width: 100%;
-    font-size: 1rem;
 }
 
-/* Contacts Layout */
 
-.contacts-section .contact-card {
-    width: 40%;
+/* =========================================
+   RENTAL PRICES
+   ========================================= */
+
+.rental-prices {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.contacts-section .contact-card h2,
-.contacts-section .contact-form-card h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+.rental-prices p {
+    color: #64748b;
 }
 
-.contacts-section .contact-card p {
-    margin-bottom: 15px;
+
+/* =========================================
+   CONTACTS
+   ========================================= */
+
+.contact-info-card p {
+    line-height: 1.6;
+    margin-bottom: 18px;
 }
 
-.contacts-section .contact-form-card {
-    width: 55%;
+.contact-info-card a {
+    color: #0284c7;
+    text-decoration: none;
 }
 
-/* Responsive Forms */
+.contact-info-card a:hover {
+    text-decoration: underline;
+}
 
-@media (max-width: 800px) {
-    .contacts-section .contact-card,
-    .contacts-section .contact-form-card {
+
+/* =========================================
+   MOBILE
+   0 - 600px
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .booking-intro,
+    .contacts-intro {
+        padding: 45px 20px 25px;
+    }
+
+    .booking-intro h1,
+    .contacts-intro h1 {
+        font-size: 2rem;
+    }
+
+    .booking-intro p,
+    .contacts-intro p {
+        font-size: 0.95rem;
+    }
+
+    .booking-section,
+    .contacts-section {
+        padding: 15px 0 50px;
+    }
+
+    .booking-info-card,
+    .booking-form-card,
+    .rental-prices,
+    .contact-info-card,
+    .contact-form-card {
+        padding: 20px;
+    }
+
+    .booking-card-buttons {
+        flex-direction: column;
+    }
+
+    .booking-card-buttons .button {
         width: 100%;
     }
 
-    .form-row {
-        flex-direction: column;
-        gap: 0;
+}
+
+
+/* =========================================
+   TABLET
+   601 - 900px
+   ========================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .booking-intro,
+    .contacts-intro {
+        padding: 55px 30px 30px;
     }
+
+    .booking-intro h1,
+    .contacts-intro h1 {
+        font-size: 2.5rem;
+    }
+
+    .booking-intro p,
+    .contacts-intro p {
+        font-size: 1.05rem;
+    }
+
+    .booking-info-card,
+    .booking-form-card,
+    .contact-info-card,
+    .contact-form-card {
+        padding: 25px;
+    }
+
+}
+
+
+/* =========================================
+   DESKTOP
+   901px+
+   ========================================= */
+
+@media (min-width: 901px) {
+
+    .booking-intro h1,
+    .contacts-intro h1 {
+        font-size: 2.8rem;
+    }
+
+    .booking-intro p,
+    .contacts-intro p {
+        font-size: 1.1rem;
+    }
+
 }
 
 /* ABOUT PAGE */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 .about-intro,
 .services-intro {
     text-align: center;
@@ -547,7 +697,10 @@ footer p {
 
 
 /* SERVICES PAGE */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 .service-card {
     width: 31%;
 }
@@ -559,7 +712,10 @@ footer p {
 
 
 /* PRICE TABLE */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 .table-container {
     overflow-x: auto;
 }
@@ -590,7 +746,10 @@ tr:hover {
 
 
 /* RESPONSIVE ABOUT & SERVICES */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 @media (max-width: 900px) {
     .about-card,
     .team-card,
@@ -706,3 +865,5 @@ footer {
 .gallery-item:hover .gallery-caption {
     opacity: 1;
 }
+=======
+>>>>>>> Stashed changes
