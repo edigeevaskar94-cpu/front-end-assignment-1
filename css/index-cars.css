@@ -1,0 +1,78 @@
+.assignment-three #main-header .navbar {
+    padding: 0;
+}
+
+.assignment-three #main-header .navbar-brand {
+    color: white;
+    padding: 0;
+}
+
+.assignment-three #main-header .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.assignment-three #main-header .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+.assignment-three #main-header .nav-menu {
+    flex-grow: 0;
+}
+
+.assignment-three #main-header .nav-menu a {
+    display: inline-block;
+    padding: 0.4rem 0;
+}
+
+@media (max-width: 991px) {
+    .assignment-three #main-header .nav-menu {
+        width: 100%;
+    }
+
+    .assignment-three #main-header .nav-menu a {
+        display: block;
+        padding: 0.55rem 0;
+    }
+}
+.assignment-three .mq-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.assignment-three .mq-cards > .card {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .assignment-three .mq-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .assignment-three .mq-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.assignment-three .popular-cars .row {
+    margin: 0;
+}
+
+.assignment-three .popular-cars .row > .card {
+    width: calc(100% - 24px);
+    margin: 12px;
+    padding: 24px;
+}
+
+@media (min-width: 768px) {
+    .assignment-three .popular-cars .row > .card {
+        width: calc(50% - 24px);
+    }
+}
+
+@media (min-width: 992px) {
+    .assignment-three .popular-cars .row > .card {
+        width: calc(33.333% - 24px);
+    }
+}

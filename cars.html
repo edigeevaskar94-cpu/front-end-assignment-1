@@ -3,23 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>YachtRent Astana - Our Yachts</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index-cars.css">
+
+    <style>
+        .cars-page .fleet .car-card {
+            width: 100%;
+        }
+
+        .cars-page .gallery {
+            grid-template-columns: 1fr;
+        }
+
+        .cars-page .gallery-caption {
+            opacity: 1;
+        }
+
+        .cars-page .fleet-intro h1 {
+            font-size: 2rem;
+        }
+
+        .cars-page .fleet-intro p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 767px) {
+            .cars-page {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "main"
+                    "footer";
+            }
+
+            .cars-page .sidebar {
+                padding: 20px 5%;
+            }
+
+            .cars-page .sidebar ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+                padding: 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .cars-page .fleet-intro h1 {
+                font-size: 2.5rem;
+            }
+
+            .cars-page .fleet-intro p {
+                font-size: 1.1rem;
+            }
+
+            .cars-page .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .cars-page .fleet-intro h1 {
+                font-size: 2.8rem;
+            }
+
+            .cars-page .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
 </head>
 
-<body class="grid-page">
+<body class="grid-page assignment-three cars-page">
 
     <header id="main-header">
-        <nav class="navigation">
-            <a href="index.html" class="logo">
+        <nav class="navigation navbar navbar-expand-lg" aria-label="Main navigation">
+            <a href="index.html" class="logo navbar-brand">
                 Yacht<span>Rent</span>
             </a>
 
-            <div class="nav-menu">
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#carsMenu"
+                    aria-controls="carsMenu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="nav-menu collapse navbar-collapse" id="carsMenu">
                 <a href="index.html">Home</a>
-                <a href="cars.html">Yachts</a>
+                <a href="cars.html" aria-current="page">Yachts</a>
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="booking.html">Booking</a>
@@ -29,21 +107,17 @@
     </header>
 
     <aside class="sidebar">
-    <h2>Yacht Categories</h2>
-
-    <ul>
-        <li><a href="#luxury">Luxury Yachts</a></li>
-        <li><a href="#family">Family Yachts</a></li>
-        <li><a href="#private">Private Trips</a></li>
-    </ul>
-</aside>
+        <h2>Yacht Categories</h2>
+        <ul>
+            <li><a href="#luxury">Luxury Yachts</a></li>
+            <li><a href="#family">Family Yachts</a></li>
+            <li><a href="#private">Private Trips</a></li>
+        </ul>
+    </aside>
 
     <main>
-
-
-        <section class="fleet-intro">
+        <section class="fleet-intro container px-sm-2 px-lg-4">
             <h1>Our Yachts</h1>
-
             <p>
                 Choose the perfect yacht for your trip.
                 We offer comfortable and luxurious yachts
@@ -51,246 +125,151 @@
             </p>
         </section>
 
+        <section class="fleet container py-4 px-sm-2 px-lg-4">
+            <div class="row g-4">
 
-        <section class="fleet">
+                <div class="col-12 col-md-6 col-lg-4" id="luxury">
+                    <article class="card car-card h-100">
+                        <img src="images/camry.png" alt="Ocean Pearl luxury yacht">
+                        <h2>Ocean Pearl</h2>
+                        <p>Elegant yacht for relaxing trips, romantic occasions and private events.</p>
+                        <ul>
+                            <li>Capacity: 8 people</li>
+                            <li>2 cabins</li>
+                            <li>Professional crew</li>
+                        </ul>
+                        <p class="car-price"><strong>120,000 ₸ / day</strong></p>
+                        <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    </article>
+                </div>
 
-            <div class="cards">
+                <div class="col-12 col-md-6 col-lg-4" id="family">
+                    <article class="card car-card h-100">
+                        <img src="images/sonata.png" alt="Sea Breeze modern yacht">
+                        <h2>Sea Breeze</h2>
+                        <p>Modern and comfortable yacht suitable for family and group trips.</p>
+                        <ul>
+                            <li>Capacity: 10 people</li>
+                            <li>3 cabins</li>
+                            <li>Professional crew</li>
+                        </ul>
+                        <p class="car-price"><strong>150,000 ₸ / day</strong></p>
+                        <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    </article>
+                </div>
 
-                <!-- Ocean Pearl -->
-                <article class="card car-card">
-                    <img src="images/camry.png"
-                         alt="Ocean Pearl luxury yacht available for rent">
+                <div class="col-12 col-md-6 col-lg-4" id="private">
+                    <article class="card car-card h-100">
+                        <img src="images/land-cruiser.png" alt="Royal Wave luxury yacht">
+                        <h2>Royal Wave</h2>
+                        <p>Spacious luxury yacht for celebrations, parties and unforgettable journeys.</p>
+                        <ul>
+                            <li>Capacity: 15 people</li>
+                            <li>4 cabins</li>
+                            <li>Professional crew</li>
+                        </ul>
+                        <p class="car-price"><strong>200,000 ₸ / day</strong></p>
+                        <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    </article>
+                </div>
 
-                    <h2>Ocean Pearl</h2>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card car-card h-100">
+                        <img src="images/rav4.png" alt="Blue Horizon yacht">
+                        <h2>Blue Horizon</h2>
+                        <p>Comfortable yacht for peaceful trips and outdoor relaxation.</p>
+                        <ul>
+                            <li>Capacity: 12 people</li>
+                            <li>3 cabins</li>
+                            <li>Professional crew</li>
+                        </ul>
+                        <p class="car-price"><strong>170,000 ₸ / day</strong></p>
+                        <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    </article>
+                </div>
 
-                    <p>
-                        Elegant yacht for relaxing trips,
-                        romantic occasions and private events.
-                    </p>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card car-card h-100">
+                        <img src="images/tucson.png" alt="Silver Wave yacht">
+                        <h2>Silver Wave</h2>
+                        <p>Stylish yacht with plenty of space for passengers and comfortable sailing.</p>
+                        <ul>
+                            <li>Capacity: 10 people</li>
+                            <li>2 cabins</li>
+                            <li>Professional crew</li>
+                        </ul>
+                        <p class="car-price"><strong>145,000 ₸ / day</strong></p>
+                        <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    </article>
+                </div>
 
-                    <ul>
-                        <li>Capacity: 8 people</li>
-                        <li>2 cabins</li>
-                        <li>Professional crew</li>
-                    </ul>
-
-                    <p class="car-price">
-                        <strong>120,000 ₸ / day</strong>
-                    </p>
-
-                    <a href="booking.html" class="button">
-                        Book Now
-                    </a>
-                </article>
-
-
-                <!-- Sea Breeze -->
-                <article class="card car-card">
-                    <img src="images/sonata.png"
-                         alt="Sea Breeze modern yacht available for rent">
-
-                    <h2>Sea Breeze</h2>
-
-                    <p>
-                        Modern and comfortable yacht suitable
-                        for family and group trips.
-                    </p>
-
-                    <ul>
-                        <li>Capacity: 10 people</li>
-                        <li>3 cabins</li>
-                        <li>Professional crew</li>
-                    </ul>
-
-                    <p class="car-price">
-                        <strong>150,000 ₸ / day</strong>
-                    </p>
-
-                    <a href="booking.html" class="button">
-                        Book Now
-                    </a>
-                </article>
-
-
-                <!-- Royal Wave -->
-                <article class="card car-card">
-                    <img src="images/land-cruiser.png"
-                         alt="Royal Wave luxury yacht available for rent">
-
-                    <h2>Royal Wave</h2>
-
-                    <p>
-                        Spacious luxury yacht for celebrations,
-                        parties and unforgettable journeys.
-                    </p>
-
-                    <ul>
-                        <li>Capacity: 15 people</li>
-                        <li>4 cabins</li>
-                        <li>Professional crew</li>
-                    </ul>
-
-                    <p class="car-price">
-                        <strong>200,000 ₸ / day</strong>
-                    </p>
-
-                    <a href="booking.html" class="button">
-                        Book Now
-                    </a>
-                </article>
-
-
-                <!-- Blue Horizon -->
-                <article class="card car-card">
-                    <img src="images/rav4.png"
-                         alt="Blue Horizon yacht available for rent">
-
-                    <h2>Blue Horizon</h2>
-
-                    <p>
-                        Comfortable yacht for peaceful trips
-                        and outdoor relaxation.
-                    </p>
-
-                    <ul>
-                        <li>Capacity: 12 people</li>
-                        <li>3 cabins</li>
-                        <li>Professional crew</li>
-                    </ul>
-
-                    <p class="car-price">
-                        <strong>170,000 ₸ / day</strong>
-                    </p>
-
-                    <a href="booking.html" class="button">
-                        Book Now
-                    </a>
-                </article>
-
-
-                <!-- Silver Wave -->
-                <article class="card car-card">
-                    <img src="images/tucson.png"
-                         alt="Silver Wave yacht available for rent">
-
-                    <h2>Silver Wave</h2>
-
-                    <p>
-                        Stylish yacht with plenty of space
-                        for passengers and comfortable sailing.
-                    </p>
-
-                    <ul>
-                        <li>Capacity: 10 people</li>
-                        <li>2 cabins</li>
-                        <li>Professional crew</li>
-                    </ul>
-
-                    <p class="car-price">
-                        <strong>145,000 ₸ / day</strong>
-                    </p>
-
-                    <a href="booking.html" class="button">
-                        Book Now
-                    </a>
-                </article>
-
-
-                <!-- Sunset Dream -->
-                <article class="card car-card">
-                    <img src="images/k5.png"
-                         alt="Sunset Dream yacht available for rent">
-
-                    <h2>Sunset Dream</h2>
-
-                    <p>
-                        Comfortable yacht perfect for sunset trips,
-                        celebrations and private occasions.
-                    </p>
-
-                    <ul>
-                        <li>Capacity: 8 people</li>
-                        <li>2 cabins</li>
-                        <li>Professional crew</li>
-                    </ul>
-
-                    <p class="car-price">
-                        <strong>130,000 ₸ / day</strong>
-                    </p>
-
-                    <a href="booking.html" class="button">
-                        Book Now
-                    </a>
-                </article>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="card car-card h-100">
+                        <img src="images/k5.png" alt="Sunset Dream yacht">
+                        <h2>Sunset Dream</h2>
+                        <p>Comfortable yacht perfect for sunset trips, celebrations and private occasions.</p>
+                        <ul>
+                            <li>Capacity: 8 people</li>
+                            <li>2 cabins</li>
+                            <li>Professional crew</li>
+                        </ul>
+                        <p class="car-price"><strong>130,000 ₸ / day</strong></p>
+                        <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    </article>
+                </div>
 
             </div>
-
         </section>
 
-        <section class="gallery-section">
+        <section class="gallery-section container py-5 px-sm-2 px-lg-4">
+            <h2 class="text-center mb-4">Yacht Gallery</h2>
 
-    <h2 style="text-align: center; margin-bottom: 30px;">
-        Yacht Gallery
-    </h2>
-
-    <div class="gallery">
-
-        <div class="gallery-item">
-            <img src="images/camry.png" alt="Luxury yacht">
-            <div class="gallery-caption">Luxury Yacht</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/sonata.png" alt="Modern yacht">
-            <div class="gallery-caption">Modern Yacht</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/land-cruiser.png" alt="Large yacht">
-            <div class="gallery-caption">Large Yacht</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/rav4.png" alt="Family yacht">
-            <div class="gallery-caption">Family Yacht</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/tucson.png" alt="Private yacht">
-            <div class="gallery-caption">Private Yacht</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/k5.png" alt="Luxury boat">
-            <div class="gallery-caption">Luxury Boat</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/main.png" alt="Yacht on the water">
-            <div class="gallery-caption">Yacht Trip</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/camry.png" alt="Yacht trip">
-            <div class="gallery-caption">Sea Trip</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/sonata.png" alt="Yacht vacation">
-            <div class="gallery-caption">Yacht Vacation</div>
-        </div>
-
-    </div>
-
-</section>
-
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/camry.png" alt="Ocean Pearl yacht">
+                    <div class="gallery-caption">Luxury Yacht</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/sonata.png" alt="Sea Breeze yacht">
+                    <div class="gallery-caption">Modern Yacht</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/land-cruiser.png" alt="Royal Wave yacht">
+                    <div class="gallery-caption">Large Yacht</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/rav4.png" alt="Blue Horizon yacht">
+                    <div class="gallery-caption">Family Yacht</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/tucson.png" alt="Silver Wave yacht">
+                    <div class="gallery-caption">Private Yacht</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/k5.png" alt="Sunset Dream yacht">
+                    <div class="gallery-caption">Luxury Boat</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/main.png" alt="Yacht on the water">
+                    <div class="gallery-caption">Yacht Trip</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/camry.png" alt="Ocean Pearl on a trip">
+                    <div class="gallery-caption">Sea Trip</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/sonata.png" alt="Sea Breeze on a trip">
+                    <div class="gallery-caption">Yacht Vacation</div>
+                </div>
+            </div>
+        </section>
     </main>
-
 
     <footer>
         <p>YachtRent Astana</p>
-        <p>Team Members: Askar, Ermek, Nurislam</p>
+        <p>Team Members: Askar, Yermek, Nurislam</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

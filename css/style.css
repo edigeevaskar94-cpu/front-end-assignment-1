@@ -629,10 +629,7 @@ footer p {
 }
 
 /* ABOUT PAGE */
-<<<<<<< HEAD
 
-=======
->>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 .about-intro,
 .services-intro {
     text-align: center;
@@ -697,10 +694,7 @@ footer p {
 
 
 /* SERVICES PAGE */
-<<<<<<< HEAD
 
-=======
->>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 .service-card {
     width: 31%;
 }
@@ -712,10 +706,7 @@ footer p {
 
 
 /* PRICE TABLE */
-<<<<<<< HEAD
 
-=======
->>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 .table-container {
     overflow-x: auto;
 }
@@ -746,10 +737,7 @@ tr:hover {
 
 
 /* RESPONSIVE ABOUT & SERVICES */
-<<<<<<< HEAD
 
-=======
->>>>>>> 0c03f21 (Complete Assignment 2 Flexbox and Grid)
 @media (max-width: 900px) {
     .about-card,
     .team-card,
@@ -865,5 +853,4 @@ footer {
 .gallery-item:hover .gallery-caption {
     opacity: 1;
 }
-=======
->>>>>>> Stashed changes
+
