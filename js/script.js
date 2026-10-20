@@ -150,3 +150,109 @@ if (currentDate && currentTime) {
     updateDateTime();
     setInterval(updateDateTime, 1000);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// --- 1. CONTACT FORM VALIDATION (contacts.html үшін) ---
+const contactForm = document.querySelector(".contact-form");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("contact-name");
+        const email = document.getElementById("contact-email");
+        const message = document.getElementById("message");
+        let isValid = true;
+
+        // Өрістерді тазалау
+        [name, email, message].forEach(input => {
+            if (input) input.classList.remove("is-invalid");
+        });
+
+        if (!name || name.value.trim() === "") {
+            if (name) name.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (!email || email.value.trim() === "" || !email.value.includes("@")) {
+            if (email) email.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (!message || message.value.trim() === "") {
+            if (message) message.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert("Message sent successfully!");
+            contactForm.reset();
+        }
+    });
+}
+
+
+// --- 2. BOOKING FORM VALIDATION (booking.html үшін) ---
+const bookingForm = document.querySelector(".booking-form");
+
+if (bookingForm) {
+    bookingForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const yachtSelect = document.getElementById("yacht-select");
+        const fullName = document.getElementById("full-name");
+        const phone = document.getElementById("phone");
+        const pickupDate = document.getElementById("pickup-date");
+        const returnDate = document.getElementById("return-date");
+        let isValid = true;
+
+        [yachtSelect, fullName, phone, pickupDate, returnDate].forEach(input => {
+            if (input) input.classList.remove("is-invalid");
+        });
+
+        if (!yachtSelect || yachtSelect.value === "") {
+            if (yachtSelect) yachtSelect.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (!fullName || fullName.value.trim() === "") {
+            if (fullName) fullName.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (!phone || phone.value.trim() === "") {
+            if (phone) phone.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (!pickupDate || pickupDate.value === "") {
+            if (pickupDate) pickupDate.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (!returnDate || returnDate.value === "") {
+            if (returnDate) returnDate.classList.add("is-invalid");
+            isValid = false;
+        }
+
+        if (isValid) {
+            alert("Booking request submitted successfully!");
+            bookingForm.reset();
+        }
+    });
+}
