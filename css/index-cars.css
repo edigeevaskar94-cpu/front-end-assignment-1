@@ -24,7 +24,7 @@
     padding: 0.4rem 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 991px) { 
     .assignment-three #main-header .nav-menu {
         width: 100%;
     }
@@ -75,4 +75,134 @@
     .assignment-three .popular-cars .row > .card {
         width: calc(33.333% - 24px);
     }
+}
+.assignment-three .hero h1 {
+    font-size: 2rem;
+}
+
+.assignment-three .hero p {
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .assignment-three .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .assignment-three .hero p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .assignment-three .hero h1 {
+        font-size: 3rem;
+    }
+
+    .assignment-three .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+.faq-item {
+    max-width: 800px;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px;
+    background-color: #f2f6fa;
+    border: none;
+    text-align: left;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    background-color: #dbeafe;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+    padding: 18px;
+    margin: 0;
+}
+
+.contact-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.contact-modal.active {
+    display: flex;
+}
+
+.contact-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    text-align: left;
+    color: #222;
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+}
+
+.modal-close:hover {
+    color: red;
+}
+
+.index-page {
+    transition: background-color 0.5s ease;
+}
+
+.date-time-box {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f0f7ff;
+    border: 2px solid #007bff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#currentDate {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+#currentTime {
+    color: #007bff;
+    font-size: 38px;
+    font-weight: bold;
 }
