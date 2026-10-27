@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index-cars.css">
+    <link rel="stylesheet" href="css/assignment5.css">
 
     <style>
         .cars-page .fleet .car-card {
@@ -125,6 +126,50 @@
             </p>
         </section>
 
+        
+<section class="container py-4">
+    <h2>Find Your Perfect Yacht</h2>
+    <p>Search our yacht collection by name.</p>
+
+    <div class="d-flex gap-2 flex-wrap">
+        <input
+            type="text"
+            id="yachtSearch"
+            class="form-control"
+            placeholder="Enter yacht name..."
+        >
+
+        
+<select id="categoryFilter" class="form-select w-auto">
+    <option value="all">All Categories</option>
+    <option value="luxury">Luxury Yachts</option>
+    <option value="family">Family Yachts</option>
+    <option value="private">Private Yachts</option>
+</select>
+
+<select id="priceFilter" class="form-select w-auto">
+    <option value="all">All Prices</option>
+    <option value="budget">Up to 150,000 ₸</option>
+    <option value="medium">150,001 - 180,000 ₸</option>
+    <option value="premium">Above 180,000 ₸</option>
+</select>
+
+
+        <button id="resetSearch" class="btn btn-primary">
+            Reset
+        </button>
+    </div>
+
+    <p id="searchResult" class="mt-3"></p>
+
+    
+<button id="themeToggle" class="btn btn-dark" type="button" aria-pressed="false">
+    Switch to Dark Mode
+</button>
+
+</section>
+
+
         <section class="fleet container py-4 px-sm-2 px-lg-4">
             <div class="row g-4">
 
@@ -223,6 +268,18 @@
 
         <section class="gallery-section container py-5 px-sm-2 px-lg-4">
             <h2 class="text-center mb-4">Yacht Gallery</h2>
+            
+<div class="featured-yacht">
+    <img
+        id="featuredYachtImage"
+        src="images/camry.png"
+        alt="Ocean Pearl yacht"
+    >
+
+    <p id="featuredYachtCaption">
+        Luxury Yacht
+    </p>
+</div>
 
             <div class="gallery">
                 <div class="gallery-item">
@@ -265,6 +322,51 @@
         </section>
     
 <section class="container py-5">
+    
+<section class="container py-5 text-center yacht-rating">
+    <h2>Rate Our Yacht Collection</h2>
+    <p>How would you rate our yachts?</p>
+
+    <div class="rating-stars" id="ratingStars">
+        <button type="button" class="rating-star" data-value="1" aria-label="1 star">★</button>
+        <button type="button" class="rating-star" data-value="2" aria-label="2 stars">★</button>
+        <button type="button" class="rating-star" data-value="3" aria-label="3 stars">★</button>
+        <button type="button" class="rating-star" data-value="4" aria-label="4 stars">★</button>
+        <button type="button" class="rating-star" data-value="5" aria-label="5 stars">★</button>
+    </div>
+
+    <p id="ratingResult" class="mt-3" aria-live="polite">
+        Select a rating from 1 to 5 stars.
+    </p>
+</section>
+
+
+<section class="container py-5 text-center">
+    <h2>Interactive Yacht Experience</h2>
+    <p>Try our yacht animation and sound effects!</p>
+
+    <div class="yacht-scene">
+        <div id="animatedYacht" class="animated-yacht">
+            ⛵
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <button id="startJourney" type="button" class="btn btn-primary">
+            Start Journey
+        </button>
+
+        <button id="playSound" type="button" class="btn btn-secondary">
+            Play Sound
+        </button>
+    </div>
+
+    <p id="journeyMessage" class="mt-3" aria-live="polite">
+        Ready for your journey!
+    </p>
+</section>
+
+
     <h2 class="text-center mb-4">Frequently Asked Questions</h2>
 
     <div class="faq-item">
@@ -344,5 +446,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/assignment5.js"></script>
 </body>
 </html>
