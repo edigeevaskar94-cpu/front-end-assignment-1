@@ -1,0 +1,28 @@
+/* Assignment 5 additions only; original team styles remain unchanged. */
+.a5-panel { margin: 35px auto; color: #17243b; }
+.a5-panel h2 { margin-bottom: 20px; }
+.a5-info { background: #f0f7ff; border: 1px solid #cfe4f8; border-radius: 14px; padding: 22px; margin: 20px 0; }
+.a5-button { background: #075a91; color: white; padding: 10px 17px; border: 0; border-radius: 8px; margin: 8px 8px 8px 0; cursor: pointer; }
+.a5-button:hover, .a5-button:focus-visible { background: #043e67; transform: translateY(-2px); }
+.a5-stars { display: flex; gap: 7px; flex-wrap: wrap; }
+.a5-star { font-size: 36px; color: #a1aab7; background: transparent; border: 0; cursor: pointer; transition: transform .2s, color .2s; }
+.a5-star:hover { transform: scale(1.18); }
+.a5-star.is-active { color: #f4af15; }
+.a5-sea { height: 120px; position: relative; overflow: hidden; border-radius: 12px; background: linear-gradient(#b8e7ff 55%, #1687b6 55%); }
+#a5-boat { display: inline-block; position: absolute; bottom: 25px; left: 5%; font-size: 52px; }
+#a5-boat.is-sailing { animation: a5Sail 3s ease-in-out forwards; }
+@keyframes a5Sail { from { left: 5%; transform: rotate(-7deg); } to { left: 78%; transform: rotate(5deg); } }
+.a5-controls { display: flex; flex-wrap: wrap; gap: 15px; align-items: end; }
+.a5-controls label, .a5-info label { display: flex; flex-direction: column; gap: 7px; font-weight: 600; }
+.a5-controls input, .a5-controls select, .a5-info input, .a5-info select { min-width: 170px; max-width: 100%; padding: 10px; border: 1px solid #97b3c9; border-radius: 8px; background: white; color: #17243b; }
+.a5-service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.a5-service-tile { background: #f0f7ff; padding: 18px; border: 1px solid #cfe4f8; border-radius: 12px; transition: transform .2s; }
+.a5-service-tile:hover { transform: translateY(-4px); }
+.a5-service-tile h3 { font-size: 1.2rem; }
+body.a5-dark { background: #101b2d; color: #f4f7fc; }
+body.a5-dark .a5-panel { color: #f4f7fc; }
+body.a5-dark .a5-info, body.a5-dark .a5-service-tile { background: #223650; color: #f4f7fc; border-color: #4a637e; }
+body.a5-dark .fleet-intro, body.a5-dark .popular-cars, body.a5-dark .gallery-section, body.a5-dark .about-card, body.a5-dark .team-card { color: #f4f7fc; }
+body.a5-dark .about-card, body.a5-dark .team-card { background: #223650; }
+@media (max-width: 600px) { .a5-panel { padding-left: 16px; padding-right: 16px; } .a5-controls { display: block; } }
+@media (prefers-reduced-motion: reduce) { #a5-boat.is-sailing { animation-duration: .01s; } }
