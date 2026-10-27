@@ -628,6 +628,121 @@ footer p {
 
 }
 
+
+
+/* =========================================
+   ASSIGNMENT 5 - NURISLAM'S STYLES
+   ========================================= */
+
+.booking-step {
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    animation: fadeIn 0.4s ease;
+}
+
+.booking-step[hidden] {
+    display: none !important;
+}
+
+.booking-step legend {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #0f172a;
+}
+
+#stepIndicator {
+    font-weight: bold;
+    color: #0284c7;
+}
+
+#bookingSummary {
+    background: #e0f2fe;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #bae6fd;
+}
+
+#bookingSummary p {
+    margin-bottom: 8px;
+    color: #0369a1;
+}
+
+.booking-feedback {
+    margin-top: 15px;
+}
+
+/* Dynamic Animation for Step Transitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .booking-step {
+        animation: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ABOUT PAGE */
 
 .about-intro,

@@ -166,93 +166,272 @@ if (currentDate && currentTime) {
 
 
 
+/* =========================================
+   YACHTRENT ASTANA - COMBINED SCRIPT
+   Team & Assignment 5 (Nurislam's Part)
+   ========================================= */
 
-// --- 1. CONTACT FORM VALIDATION (contacts.html үшін) ---
-const contactForm = document.querySelector(".contact-form");
+document.addEventListener("DOMContentLoaded", function() {
 
-if (contactForm) {
-    contactForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById("contact-name");
-        const email = document.getElementById("contact-email");
-        const message = document.getElementById("message");
-        let isValid = true;
+    // --- 1. CONTACT FORM VALIDATION & DOM MANIPULATION (Assignment 5) ---
+    const contactForm = document.querySelector(".contact-form");
 
-        // Өрістерді тазалау
-        [name, email, message].forEach(input => {
-            if (input) input.classList.remove("is-invalid");
+    if (contactForm) {
+        const contactFeedback = document.getElementById("contactFeedback");
+
+        // Web Audio API helper for sound effect on success
+        function playSuccessSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+                osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15); // A5
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } catch (e) {
+                // AudioContext fallback
+            }
+        }
+
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("contact-name");
+            const email = document.getElementById("contact-email");
+            const message = document.getElementById("message");
+            let isValid = true;
+
+            [name, email, message].forEach(input => {
+                if (input) input.classList.remove("is-invalid");
+            });
+            if (contactFeedback) contactFeedback.textContent = "";
+
+            if (!name || name.value.trim() === "") {
+                if (name) name.classList.add("is-invalid");
+                isValid = false;
+            }
+
+            if (!email || email.value.trim() === "" || !email.value.includes("@")) {
+                if (email) email.classList.add("is-invalid");
+                isValid = false;
+            }
+
+            if (!message || message.value.trim() === "") {
+                if (message) message.classList.add("is-invalid");
+                isValid = false;
+            }
+
+            if (isValid) {
+                playSuccessSound();
+                if (contactFeedback) {
+                    contactFeedback.textContent = "Thank you! Your message has been sent successfully.";
+                    contactFeedback.style.color = "#16a34a";
+                }
+                contactForm.reset();
+            } else {
+                if (contactFeedback) {
+                    contactFeedback.textContent = "Please correct the highlighted fields above.";
+                    contactFeedback.style.color = "#dc3545";
+                }
+            }
+        });
+    }
+
+
+    // --- 2. MULTI-STEP YACHT BOOKING FORM (Assignment 5 - Nurislam's Part) ---
+    const multiStepForm = document.getElementById("bookingForm");
+
+    if (multiStepForm) {
+        const steps = document.querySelectorAll(".booking-step");
+        const nextBtn = document.getElementById("nextBtn");
+        const backBtn = document.getElementById("backBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const indicator = document.getElementById("stepIndicator");
+        const progressBar = document.getElementById("bookingProgressBar");
+        const feedback = document.getElementById("bookingFeedback");
+        const summary = document.getElementById("bookingSummary");
+
+        let currentStep = 0;
+
+        // Array of Yacht objects with pricing metadata
+        const yachts = [
+            { id: "ocean-pearl", name: "Ocean Pearl", price: 120000 },
+            { id: "sea-breeze", name: "Sea Breeze", price: 150000 },
+            { id: "royal-wave", name: "Royal Wave", price: 200000 },
+            { id: "blue-horizon", name: "Blue Horizon", price: 170000 },
+            { id: "silver-wave", name: "Silver Wave", price: 145000 },
+            { id: "sunset-dream", name: "Sunset Dream", price: 130000 }
+        ];
+
+        function todayString() {
+            const d = new Date();
+            return d.getFullYear() + "-" + 
+                   String(d.getMonth() + 1).padStart(2, "0") + "-" + 
+                   String(d.getDate()).padStart(2, "0");
+        }
+
+        function validateStep(index) {
+            feedback.textContent = "";
+
+            if (index === 0) {
+                const yacht = document.getElementById("yacht-select").value;
+                const start = document.getElementById("pickup-date").value;
+                const end = document.getElementById("return-date").value;
+
+                if (!yacht || !start || !end) {
+                    feedback.textContent = "Please complete all required fields.";
+                    return false;
+                }
+
+                if (start < todayString() || end < start) {
+                    feedback.textContent = "Please select valid rental dates.";
+                    return false;
+                }
+            }
+
+            if (index === 1) {
+                const name = document.getElementById("full-name").value.trim();
+                const phone = document.getElementById("phone").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const digits = phone.replace(/\D/g, "");
+
+                if (name.length < 2 || digits.length < 10 || digits.length > 15 || !/^\+?[\d\s()-]{10,20}$/.test(phone)) {
+                    feedback.textContent = "Please enter a valid full name and phone number.";
+                    return false;
+                }
+
+                if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    feedback.textContent = "Please enter a valid email address.";
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function showStep(index, callback) {
+            currentStep = index;
+
+            steps.forEach(function(step, i) {
+                step.hidden = i !== currentStep;
+            });
+
+            const stepNum = currentStep + 1;
+            indicator.textContent = "Step " + stepNum + " of 3";
+
+            if (progressBar) {
+                const progressPerc = stepNum === 1 ? "33%" : (stepNum === 2 ? "66%" : "100%");
+                progressBar.style.width = progressPerc;
+                progressBar.setAttribute("aria-valuenow", stepNum === 1 ? 33 : (stepNum === 2 ? 66 : 100));
+            }
+
+            backBtn.hidden = currentStep === 0;
+            nextBtn.hidden = currentStep === 2;
+            submitBtn.hidden = currentStep !== 2;
+
+            feedback.textContent = "";
+
+            if (typeof callback === "function") {
+                callback();
+            }
+        }
+
+        function updateSummary() {
+            const yachtId = document.getElementById("yacht-select").value;
+            const yacht = yachts.find(item => item.id === yachtId) || { name: "Selected Yacht", price: 0 };
+
+            const startValue = document.getElementById("pickup-date").value;
+            const endValue = document.getElementById("return-date").value;
+
+            const start = new Date(startValue + "T00:00:00");
+            const end = new Date(endValue + "T00:00:00");
+
+            const days = Math.round((end - start) / 86400000) + 1;
+            const total = yacht.price * (days > 0 ? days : 1);
+
+            const data = {
+                "Yacht": yacht.name,
+                "Start Date": startValue,
+                "End Date": endValue,
+                "Rental Days": days > 0 ? days : 1,
+                "Full Name": document.getElementById("full-name").value.trim(),
+                "Phone": document.getElementById("phone").value.trim(),
+                "Email": document.getElementById("email").value.trim() || "Not provided",
+                "Additional Request": document.getElementById("notes").value.trim() || "None",
+                "Estimated Total": total.toLocaleString("en-US") + " ₸"
+            };
+
+            summary.replaceChildren();
+
+            Object.entries(data).forEach(function(entry) {
+                const p = document.createElement("p");
+                const strong = document.createElement("strong");
+
+                strong.textContent = entry[0] + ": ";
+                p.append(strong, document.createTextNode(String(entry[1])));
+
+                summary.appendChild(p);
+            });
+        }
+
+        nextBtn.addEventListener("click", function() {
+            if (!validateStep(currentStep)) return;
+
+            if (currentStep < 2) {
+                showStep(
+                    currentStep + 1,
+                    currentStep === 1 ? updateSummary : null
+                );
+            }
         });
 
-        if (!name || name.value.trim() === "") {
-            if (name) name.classList.add("is-invalid");
-            isValid = false;
-        }
-
-        if (!email || email.value.trim() === "" || !email.value.includes("@")) {
-            if (email) email.classList.add("is-invalid");
-            isValid = false;
-        }
-
-        if (!message || message.value.trim() === "") {
-            if (message) message.classList.add("is-invalid");
-            isValid = false;
-        }
-
-        if (isValid) {
-            alert("Message sent successfully!");
-            contactForm.reset();
-        }
-    });
-}
-
-
-// --- 2. BOOKING FORM VALIDATION (booking.html үшін) ---
-const bookingForm = document.querySelector(".booking-form");
-
-if (bookingForm) {
-    bookingForm.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const yachtSelect = document.getElementById("yacht-select");
-        const fullName = document.getElementById("full-name");
-        const phone = document.getElementById("phone");
-        const pickupDate = document.getElementById("pickup-date");
-        const returnDate = document.getElementById("return-date");
-        let isValid = true;
-
-        [yachtSelect, fullName, phone, pickupDate, returnDate].forEach(input => {
-            if (input) input.classList.remove("is-invalid");
+        backBtn.addEventListener("click", function() {
+            if (currentStep > 0) {
+                showStep(currentStep - 1);
+            }
         });
 
-        if (!yachtSelect || yachtSelect.value === "") {
-            if (yachtSelect) yachtSelect.classList.add("is-invalid");
-            isValid = false;
-        }
+        multiStepForm.addEventListener("submit", function(event) {
+            event.preventDefault();
 
-        if (!fullName || fullName.value.trim() === "") {
-            if (fullName) fullName.classList.add("is-invalid");
-            isValid = false;
-        }
+            if (!validateStep(0)) {
+                showStep(0);
+                return;
+            }
 
-        if (!phone || phone.value.trim() === "") {
-            if (phone) phone.classList.add("is-invalid");
-            isValid = false;
-        }
+            if (!validateStep(1)) {
+                showStep(1);
+                return;
+            }
 
-        if (!pickupDate || pickupDate.value === "") {
-            if (pickupDate) pickupDate.classList.add("is-invalid");
-            isValid = false;
-        }
+            feedback.textContent = "Booking request submitted successfully! (Demo mode: request saved).";
+            feedback.style.color = "#16a34a";
+            submitBtn.disabled = true;
+        });
 
-        if (!returnDate || returnDate.value === "") {
-            if (returnDate) returnDate.classList.add("is-invalid");
-            isValid = false;
-        }
+        showStep(0);
+    }
 
-        if (isValid) {
-            alert("Booking request submitted successfully!");
-            bookingForm.reset();
+
+    // --- 3. KEYBOARD ACCESSIBILITY (Arrow Navigation) ---
+    document.addEventListener("keydown", function(e) {
+        const multiStepFormActive = document.getElementById("bookingForm");
+        if (multiStepFormActive && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) {
+            const nextBtn = document.getElementById("nextBtn");
+            const backBtn = document.getElementById("backBtn");
+            
+            if (e.key === "ArrowRight" && nextBtn && !nextBtn.hidden) {
+                nextBtn.click();
+            } else if (e.key === "ArrowLeft" && backBtn && !backBtn.hidden) {
+                backBtn.click();
+            }
         }
     });
-}
+
+});
