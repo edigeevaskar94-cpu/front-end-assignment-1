@@ -456,7 +456,7 @@ $(document).ready(function () {
     // Task 0: Setup verification
     console.log("jQuery is ready!");
 
-    // Toast және Scroll Progress барларын автоматты түрде жасау
+    
     if ($("#toast-container").length === 0) {
         $("body").append('<div id="toast-container"></div>');
     }
@@ -647,5 +647,113 @@ $(document).ready(function () {
     }
 
     $(window).on("scroll resize", lazyLoadImages);
-    lazyLoadImages(); // Ашылғанда тексеру
+    lazyLoadImages(); 
+});
+
+$(document).ready(function () {
+    // --- Star Rating Logic ---
+    $(".star").on("mouseenter", function () {
+        let val = $(this).data("value");
+        $(".star").each(function () {
+            if ($(this).data("value") <= val) {
+                $(this).addClass("hovered");
+            } else {
+                $(this).removeClass("hovered");
+            }
+        });
+    }).on("mouseleave", function () {
+        $(".star").removeClass("hovered");
+    });
+
+    $(".star").on("click", function () {
+        let val = $(this).data("value");
+        $(".star").removeClass("selected");
+        $(".star").each(function () {
+            if ($(this).data("value") <= val) {
+                $(this).addClass("selected");
+            }
+        });
+        $("#ratingMessage").text(`Thank you! You rated us ${val} out of 5 stars.`);
+        if (typeof showToast === "function") {
+            showToast(`Rating submitted: ${val} stars!`);
+        }
+    });
+
+    // --- Interactive Yacht Animation (Start Journey) ---
+    $("#startJourneyBtn").on("click", function () {
+        let $yacht = $("#animatedYacht");
+        let maxPos = $(".yacht-viewport").width() - 80;
+
+        $("#journeyStatus").text("Journey in progress...");
+        $yacht.css("left", "10px");
+
+        // Яхтаны оң жаққа қарай қозғалту
+        $yacht.animate({ left: maxPos + "px" }, 2000, function () {
+            $("#journeyStatus").text("Journey completed successfully!");
+            if (typeof showToast === "function") {
+                showToast("Yacht journey finished!");
+            }
+        });
+    });
+
+    // --- Web Audio API (Play Sound Effect) ---
+    $("#playSoundBtn").on("click", function () {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(440, audioCtx.currentTime); // Жиілік
+            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3);
+
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.3);
+
+            $("#journeyStatus").text("Sound played!");
+        } catch (e) {
+            console.log("Audio not supported or blocked", e);
+        }
+    });
+});
+
+
+
+
+
+
+
+
+$(document).ready(function () {
+    // 1. Бет жүктелгенде LocalStorage-тен режимді тексеру
+    if (localStorage.getItem('theme') === 'dark') {
+        $('body').addClass('dark-mode');
+        $('#themeToggle').text('☀️ Light').removeClass('btn-outline-dark').addClass('btn-outline-light');
+    }
+
+    // 2. Батырманы басқан кездегі әрекет
+    $('#themeToggle').on('click', function () {
+        $('body').toggleClass('dark-mode');
+        
+        // Егер қараңғы режим қосылса
+        if ($('body').hasClass('dark-mode')) {
+            localStorage.setItem('theme', 'dark'); // Жадыға сақтау
+            $(this).text('☀️ Light')
+                   .removeClass('btn-outline-dark')
+                   .addClass('btn-outline-light');
+        } 
+        // Егер жарық режимге қайтса
+        else {
+            localStorage.setItem('theme', 'light'); // Жадыға сақтау
+            $(this).text('🌙 Dark')
+                   .removeClass('btn-outline-light')
+                   .addClass('btn-outline-dark');
+        }
+    });
 });
