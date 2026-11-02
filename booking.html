@@ -209,6 +209,43 @@
             </a>
         </div>
     </section>
+<!-- Брондау аяқталғаннан кейін ғана шығатын интерактивті бөлім -->
+<div id="postBookingSection" class="mt-4 p-4 bg-white shadow-sm rounded text-center" hidden>
+    <h3 class="fw-bold text-success mb-3">🎉 Booking Confirmed Successfully!</h3>
+    
+    <!-- Interactive Yacht Experience -->
+    <div class="interactive-experience p-3 bg-light rounded">
+        <h4 class="fw-bold">Interactive Yacht Experience</h4>
+        <p class="text-muted small">Try our yacht animation and sound effects!</p>
+        
+        <!-- Animation Box -->
+        <div class="yacht-viewport position-relative overflow-hidden rounded mb-3" style="height: 150px; background: linear-gradient(to bottom, #7dd3fc, #0284c7);">
+            <div id="animatedYacht" class="position-absolute" style="bottom: 15px; left: 10px; transition: left 2s ease-in-out;">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 18L4 21H20L22 18H2Z" fill="#0284c7"/>
+                    <path d="M11 3L3 15H21L11 3Z" fill="#f8fafc"/>
+                    <path d="M12 4V14H19L12 4Z" fill="#e2e8f0"/>
+                    <path d="M12 2V14H10V2H12Z" fill="#334155"/>
+                </svg>
+            </div>
+            <div class="position-absolute w-100 bottom-0" style="height: 20px; background: #0369a1;"></div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-2 mb-2">
+            <button id="startJourneyBtn" class="btn btn-primary btn-sm">Start Journey</button>
+            <button id="playSoundBtn" class="btn btn-secondary btn-sm">Play Sound</button>
+        </div>
+        <p id="journeyStatus" class="text-muted small mb-0">Ready for your journey!</p>
+    </div>
+</div>
+
+        <div class="d-flex justify-content-center gap-2 mb-2">
+            <button id="startJourneyBtn" class="btn btn-primary btn-sm">Start Journey</button>
+            <button id="playSoundBtn" class="btn btn-secondary btn-sm">Play Sound</button>
+        </div>
+        <p id="journeyStatus" class="text-muted small mb-0">Ready for your journey!</p>
+    </div>
+</div>
 </main>
 
 <footer>

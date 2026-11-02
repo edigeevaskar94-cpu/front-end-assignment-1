@@ -651,43 +651,37 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    // --- Star Rating Logic ---
-    $(".star").on("mouseenter", function () {
-        let val = $(this).data("value");
-        $(".star").each(function () {
-            if ($(this).data("value") <= val) {
-                $(this).addClass("hovered");
-            } else {
-                $(this).removeClass("hovered");
-            }
-        });
-    }).on("mouseleave", function () {
-        $(".star").removeClass("hovered");
-    });
+    // Брондау формасы жіберілгенде
+    $("#bookingForm").on("submit", function (e) {
+        let $form = $(this);
+        let $submitBtn = $form.find('button[type="submit"]');
 
-    $(".star").on("click", function () {
-        let val = $(this).data("value");
-        $(".star").removeClass("selected");
-        $(".star").each(function () {
-            if ($(this).data("value") <= val) {
-                $(this).addClass("selected");
-            }
-        });
-        $("#ratingMessage").text(`Thank you! You rated us ${val} out of 5 stars.`);
-        if (typeof showToast === "function") {
-            showToast(`Rating submitted: ${val} stars!`);
-        }
+        e.preventDefault();
+
+        let originalText = $submitBtn.html();
+
+        $submitBtn
+            .prop("disabled", true)
+            .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Please wait...');
+
+        setTimeout(function () {
+            $submitBtn.prop("disabled", false).html(originalText);
+            
+            showToast("Success! Booking confirmed successfully.");
+            
+            // Бронь жасалып болған соң анимация бөлігін көрсету
+            $("#postBookingSection").removeAttr("hidden").hide().fadeIn(500);
+        }, 2000);
     });
 
     // --- Interactive Yacht Animation (Start Journey) ---
-    $("#startJourneyBtn").on("click", function () {
+    $(document).on("click", "#startJourneyBtn", function () {
         let $yacht = $("#animatedYacht");
-        let maxPos = $(".yacht-viewport").width() - 80;
+        let maxPos = $(".yacht-viewport").width() - 70;
 
         $("#journeyStatus").text("Journey in progress...");
         $yacht.css("left", "10px");
 
-        // Яхтаны оң жаққа қарай қозғалту
         $yacht.animate({ left: maxPos + "px" }, 2000, function () {
             $("#journeyStatus").text("Journey completed successfully!");
             if (typeof showToast === "function") {
@@ -697,14 +691,14 @@ $(document).ready(function () {
     });
 
     // --- Web Audio API (Play Sound Effect) ---
-    $("#playSoundBtn").on("click", function () {
+    $(document).on("click", "#playSoundBtn", function () {
         try {
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
 
             osc.type = "sine";
-            osc.frequency.setValueAtTime(440, audioCtx.currentTime); // Жиілік
+            osc.frequency.setValueAtTime(440, audioCtx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3);
 
             gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
@@ -731,26 +725,26 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    // 1. Бет жүктелгенде LocalStorage-тен режимді тексеру
+   
     if (localStorage.getItem('theme') === 'dark') {
         $('body').addClass('dark-mode');
         $('#themeToggle').text('☀️ Light').removeClass('btn-outline-dark').addClass('btn-outline-light');
     }
 
-    // 2. Батырманы басқан кездегі әрекет
+    
     $('#themeToggle').on('click', function () {
         $('body').toggleClass('dark-mode');
         
         // Егер қараңғы режим қосылса
         if ($('body').hasClass('dark-mode')) {
-            localStorage.setItem('theme', 'dark'); // Жадыға сақтау
+            localStorage.setItem('theme', 'dark'); 
             $(this).text('☀️ Light')
                    .removeClass('btn-outline-dark')
                    .addClass('btn-outline-light');
         } 
-        // Егер жарық режимге қайтса
+        
         else {
-            localStorage.setItem('theme', 'light'); // Жадыға сақтау
+            localStorage.setItem('theme', 'light'); 
             $(this).text('🌙 Dark')
                    .removeClass('btn-outline-light')
                    .addClass('btn-outline-dark');
