@@ -435,3 +435,217 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ASSIGNMENT 6 - JQUERY IMPLEMENTATION
+   Nurislam's Part (Booking & Contacts)
+   ========================================= */
+
+$(document).ready(function () {
+    // Task 0: Setup verification
+    console.log("jQuery is ready!");
+
+    // Toast және Scroll Progress барларын автоматты түрде жасау
+    if ($("#toast-container").length === 0) {
+        $("body").append('<div id="toast-container"></div>');
+    }
+
+    if ($("#scroll-progress-container").length === 0) {
+        $("body").prepend('<div id="scroll-progress-container"><div id="scroll-progress-bar"></div></div>');
+    }
+
+    // =========================================
+    // PART 1: JQUERY SEARCH (booking.html & contacts.html)
+    // =========================================
+
+    // Task 1: Real-time Search & Live Filter
+    $("#yacht-search-input").on("keyup", function () {
+        let value = $(this).val().toLowerCase().trim();
+        $(".list-group-item, .yacht-card").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
+
+    // Task 2: Autocomplete Search Suggestions
+    const yachtList = [
+        "Ocean Pearl", "Sea Breeze", "Royal Wave", 
+        "Blue Horizon", "Silver Wave", "Sunset Dream"
+    ];
+
+    $("#yacht-search-input").on("input", function () {
+        let query = $(this).val().toLowerCase();
+        let $suggestionsBox = $("#autocomplete-list");
+
+        if ($suggestionsBox.length === 0) {
+            $suggestionsBox = $('<div id="autocomplete-list" class="autocomplete-suggestions"></div>');
+            $(this).after($suggestionsBox);
+        }
+
+        $suggestionsBox.empty().hide();
+
+        if (query.length > 0) {
+            let matches = yachtList.filter(name => name.toLowerCase().includes(query));
+            if (matches.length > 0) {
+                matches.forEach(name => {
+                    $suggestionsBox.append(`<div class="autocomplete-suggestion">${name}</div>`);
+                });
+                $suggestionsBox.show();
+            }
+        }
+    });
+
+    $(document).on("click", ".autocomplete-suggestion", function () {
+        $("#yacht-search-input").val($(this).text()).trigger("keyup");
+        $("#autocomplete-list").hide();
+    });
+
+    // Task 3: Search Highlighting
+    $("#info-search-input").on("keyup", function () {
+        let keyword = $(this).val().trim();
+        let $content = $(".booking-info-card, .contact-info-card");
+
+        $content.find(".search-highlight").each(function () {
+            $(this).replaceWith($(this).text());
+        });
+
+        if (keyword.length > 1) {
+            let regex = new RegExp(`(${keyword})`, "gi");
+            $content.find("p, li, h2, h3").each(function () {
+                let html = $(this).html();
+                let newHtml = html.replace(regex, '<span class="search-highlight">$1</span>');
+                $(this).html(newHtml);
+            });
+        }
+    });
+
+    // =========================================
+    // PART 2: UX ENGAGEMENT ELEMENTS
+    // =========================================
+
+    // Task 4: Scroll Progress Bar
+    $(window).on("scroll", function () {
+        let scrollTop = $(window).scrollTop();
+        let docHeight = $(document).height() - $(window).height();
+        let scrollPercent = (scrollTop / docHeight) * 100;
+        $("#scroll-progress-bar").css("width", scrollPercent + "%");
+    });
+
+    // Task 5: Animated Number Counter
+    let counterStarted = false;
+    $(window).on("scroll", function () {
+        let $counterSection = $(".rental-prices, .contact-info-card");
+        if ($counterSection.length > 0 && !counterStarted) {
+            let oTop = $counterSection.offset().top - window.innerHeight;
+            if ($(window).scrollTop() > oTop) {
+                $(".counter-number").each(function () {
+                    let $this = $(this);
+                    let countTo = parseInt($this.attr("data-count"), 10);
+                    $({ countNum: 0 }).animate(
+                        { countNum: countTo },
+                        {
+                            duration: 2000,
+                            easing: "swing",
+                            step: function () {
+                                $this.text(Math.floor(this.countNum));
+                            },
+                            complete: function () {
+                                $this.text(this.countNum + "+");
+                            }
+                        }
+                    );
+                });
+                counterStarted = true;
+            }
+        }
+    });
+
+    // Task 6: Loading Spinner on Submit & Task 7: Toast Notifications
+    window.showToast = function (message) {
+        let $toast = $(`
+            <div class="toast-notification">
+                <span>ℹ️</span>
+                <div>${message}</div>
+            </div>
+        `).appendTo("#toast-container");
+
+        $toast.fadeIn(300).delay(3000).fadeOut(500, function () {
+            $(this).remove();
+        });
+    };
+
+    // Booking form & Contact form submission handling
+    $("#bookingForm, .contact-form").on("submit", function (e) {
+        let $form = $(this);
+        let $submitBtn = $form.find('button[type="submit"]');
+
+        e.preventDefault();
+
+        let originalText = $submitBtn.html();
+
+        // Task 6: Spinner көрсетіп, батырманы сөндіру
+        $submitBtn
+            .prop("disabled", true)
+            .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Please wait...');
+
+        setTimeout(function () {
+            $submitBtn.prop("disabled", false).html(originalText);
+            
+            // Task 7: Toast notification көрсету
+            showToast("Success! Request submitted successfully.");
+            $form[0].reset();
+        }, 2000);
+    });
+
+    // =========================================
+    // PART 3: IMPROVE WEB APP FUNCTIONALITY
+    // =========================================
+
+    // Task 8: Copied to Clipboard Button
+    $(".copy-btn").on("click", function () {
+        let $btn = $(this);
+        let textToCopy = $btn.data("copy-text") || $btn.text();
+
+        navigator.clipboard.writeText(textToCopy).then(function () {
+            let originalText = $btn.html();
+            $btn.html('✓ Copied!');
+            showToast("Copied to clipboard!");
+
+            setTimeout(function () {
+                $btn.html(originalText);
+            }, 2000);
+        });
+    });
+
+    // Task 9: Image Lazy Loading
+    function lazyLoadImages() {
+        $("img.lazy-img").each(function () {
+            let $img = $(this);
+            if ($img.hasClass("loaded")) return;
+
+            let windowTop = $(window).scrollTop();
+            let windowBottom = windowTop + $(window).height();
+            let imgTop = $img.offset().top;
+
+            if (imgTop < windowBottom + 100) {
+                let realSrc = $img.attr("data-src");
+                if (realSrc) {
+                    $img.attr("src", realSrc).addClass("loaded");
+                }
+            }
+        });
+    }
+
+    $(window).on("scroll resize", lazyLoadImages);
+    lazyLoadImages(); // Ашылғанда тексеру
+});
