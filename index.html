@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/index-cars.css">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/layout.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    
 </head>
 
 <body class="assignment-three index-page">
@@ -257,6 +259,14 @@
     </section>
 </main>
 
+<section class="container py-5 text-center" id="fleetStats">
+    <h2>Our Yacht Fleet</h2>
+    <p>Explore our available yachts!</p>
+
+    <h1 id="fleetCount" class="display-3 fw-bold text-primary">0</h1>
+    <p>Yachts Available</p>
+</section>
+
 <footer>
     <p>YachtRent Astana</p>
     <p>Team Members: Askar, Ermek, Nurislam</p>
@@ -265,6 +275,92 @@
 <!-- Original scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    // Task 5 - Animated Number Counter
+
+    let counterStarted = false;
+
+    function animateCounter() {
+        const $counter = $("#fleetCount");
+
+        if (!$counter.length || counterStarted) return;
+
+        if ($counter[0].getBoundingClientRect().top < window.innerHeight) {
+            counterStarted = true;
+
+            $({ count: 0 }).animate(
+                { count: 6 },
+                {
+                    duration: 2000,
+                    step: function () {
+                        $counter.text(Math.ceil(this.count));
+                    },
+                    complete: function () {
+                        $counter.text("6");
+                    }
+                }
+            );
+        }
+    }
+
+    $(window).on("scroll resize", animateCounter);
+    animateCounter();
+
+
+    // Task 7 - Toast Notification
+
+    function showToast(message) {
+        const $toast = $("<div>")
+            .text(message)
+            .attr("role", "status")
+            .addClass("position-fixed bottom-0 end-0 m-4 p-3 bg-dark text-white rounded shadow")
+            .css("z-index", 9999)
+            .hide()
+            .appendTo("body");
+
+        $toast.fadeIn(300)
+              .delay(2500)
+              .fadeOut(400, function () {
+                  $(this).remove();
+              });
+    }
+
+
+    // Task 6 - Loading Spinner on Submit
+
+    $("#registrationForm").on("submit", function (event) {
+        event.preventDefault();
+
+        // Check the result of the existing validation
+        if ($("#formMessage").text().trim() !== "Validation successful!") {
+            return;
+        }
+
+        const $button = $(this).find('button[type="submit"]');
+
+        if ($button.prop("disabled")) return;
+
+        $button.prop("disabled", true).html(
+            '<span class="spinner-border spinner-border-sm me-2"></span>Please wait...'
+        );
+
+        setTimeout(function () {
+            $button.prop("disabled", false).text("Register");
+
+            $("#formMessage").text("Validation successful! Demo only.");
+
+            showToast("Registration form validated successfully!");
+        }, 2000);
+    });
+
+});
+</script>
+</body>
+</html>
+
 
 <!-- Shared theme label -->
 <script src="js/theme-ui.js"></script>

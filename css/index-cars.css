@@ -1,0 +1,254 @@
+.assignment-three #main-header .navbar {
+    padding: 0;
+}
+
+.assignment-three #main-header .navbar-brand {
+    color: white;
+    padding: 0;
+}
+
+.assignment-three #main-header .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.assignment-three #main-header .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+.assignment-three #main-header .nav-menu {
+    flex-grow: 0;
+}
+
+.assignment-three #main-header .nav-menu a {
+    display: inline-block;
+    padding: 0.4rem 0;
+}
+
+@media (max-width: 991px) { 
+    .assignment-three #main-header .nav-menu {
+        width: 100%;
+    }
+
+    .assignment-three #main-header .nav-menu a {
+        display: block;
+        padding: 0.55rem 0;
+    }
+}
+.assignment-three .mq-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.assignment-three .mq-cards > .card {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .assignment-three .mq-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .assignment-three .mq-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.assignment-three .popular-cars .row {
+    margin: 0;
+}
+
+.assignment-three .popular-cars .row > .card {
+    width: calc(100% - 24px);
+    margin: 12px;
+    padding: 24px;
+}
+
+@media (min-width: 768px) {
+    .assignment-three .popular-cars .row > .card {
+        width: calc(50% - 24px);
+    }
+}
+
+@media (min-width: 992px) {
+    .assignment-three .popular-cars .row > .card {
+        width: calc(33.333% - 24px);
+    }
+}
+.assignment-three .hero h1 {
+    font-size: 2rem;
+}
+
+.assignment-three .hero p {
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .assignment-three .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .assignment-three .hero p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .assignment-three .hero h1 {
+        font-size: 3rem;
+    }
+
+    .assignment-three .hero p {
+        font-size: 1.2rem;
+    }
+}
+
+.faq-item {
+    max-width: 800px;
+    margin: 10px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 18px;
+    background-color: #f2f6fa;
+    border: none;
+    text-align: left;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    background-color: #dbeafe;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.faq-answer p {
+    padding: 18px;
+    margin: 0;
+}
+
+.contact-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.contact-modal.active {
+    display: flex;
+}
+
+.contact-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    text-align: left;
+    color: #222;
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+}
+
+.modal-close:hover {
+    color: red;
+}
+
+.index-page {
+    transition: background-color 0.5s ease;
+}
+
+.date-time-box {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f0f7ff;
+    border: 2px solid #007bff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#currentDate {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+#currentTime {
+    color: #007bff;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+/* Assignment 6 - jQuery Search */
+
+.askar-search-box {
+    position: relative;
+    flex: 1 1 250px;
+    min-width: 200px;
+}
+
+.askar-search-box input {
+    width: 100%;
+}
+
+.askar-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.askar-suggestion {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+}
+
+.askar-suggestion:hover {
+    background: #e0f2fe;
+}
+
+.askar-highlight {
+    background: #fde68a;
+    color: #111827;
+    padding: 2px;
+    border-radius: 3px;
+}

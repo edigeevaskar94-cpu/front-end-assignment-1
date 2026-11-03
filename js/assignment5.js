@@ -315,3 +315,127 @@ navLinks.forEach(function (link, index) {
 });
 
 });
+
+
+/* Assignment 6 - Tasks 1, 2, 3 - Askar */
+
+$(document).ready(function () {
+    const $search = $("#yachtSearch");
+
+    if (!$search.length) return;
+
+    const yachts = [
+        { name: "Ocean Pearl", category: "luxury", price: 120000 },
+        { name: "Sea Breeze", category: "family", price: 150000 },
+        { name: "Royal Wave", category: "luxury", price: 200000 },
+        { name: "Blue Horizon", category: "family", price: 170000 },
+        { name: "Silver Wave", category: "private", price: 145000 },
+        { name: "Sunset Dream", category: "private", price: 130000 }
+    ];
+
+    // Task 2: Autocomplete suggestions
+    $search.wrap('<div class="askar-search-box"></div>');
+
+    const $suggestions = $('<div class="askar-suggestions"></div>')
+        .hide()
+        .insertAfter($search);
+
+    function updateSearch(showSuggestions = false) {
+        const keyword = $search.val().toLowerCase().trim();
+        const category = $("#categoryFilter").val();
+        const price = $("#priceFilter").val();
+
+        // Task 1: Real-time filtering
+        const matched = yachts.filter(function (yacht) {
+            const matchName = yacht.name.toLowerCase().includes(keyword);
+            const matchCategory = category === "all" ||
+                                  yacht.category === category;
+
+            let matchPrice = true;
+
+            if (price === "budget") {
+                matchPrice = yacht.price <= 150000;
+            } else if (price === "medium") {
+                matchPrice = yacht.price > 150000 && yacht.price <= 180000;
+            } else if (price === "premium") {
+                matchPrice = yacht.price > 180000;
+            }
+
+            return matchName && matchCategory && matchPrice;
+        });
+
+        $(".fleet .car-card").each(function () {
+            const $title = $(this).find("h2");
+            const name = $title.text().trim();
+
+            const visible = matched.some(yacht => yacht.name === name);
+
+            $(this).parent().toggle(visible);
+
+            // Task 3: Highlight matching text
+            $title.text(name);
+
+            if (keyword) {
+                const position = name.toLowerCase().indexOf(keyword);
+
+                if (position !== -1) {
+                    $title.empty()
+                        .append(document.createTextNode(name.slice(0, position)))
+                        .append(
+                            $("<mark>").addClass("askar-highlight")
+                                .text(name.slice(position, position + keyword.length))
+                        )
+                        .append(document.createTextNode(name.slice(position + keyword.length)));
+                }
+            }
+        });
+
+        $("#searchResult").text("Yachts found: " + matched.length);
+
+        $suggestions.empty().hide();
+
+        if (keyword && showSuggestions) {
+            matched.forEach(function (yacht) {
+                const $option = $("<button>", {
+                    type: "button",
+                    class: "askar-suggestion",
+                    text: yacht.name
+                });
+
+                $option.on("click", function () {
+                    $search.val(yacht.name).trigger("input");
+                    $suggestions.hide();
+                });
+
+                $suggestions.append($option);
+            });
+
+            if (matched.length) {
+                $suggestions.show();
+            }
+        }
+    }
+
+    $search.on("input focus", function () {
+        updateSearch(true);
+    });
+
+    $("#categoryFilter, #priceFilter").on("change", function () {
+        updateSearch(false);
+    });
+
+    $("#resetSearch").on("click", function () {
+        $search.val("");
+        $("#categoryFilter, #priceFilter").val("all");
+        updateSearch(false);
+    });
+
+    $(document).on("click", function (event) {
+        if (!$(event.target).closest(".askar-search-box").length) {
+            $suggestions.hide();
+        }
+    });
+
+    updateSearch(false);
+});
+
