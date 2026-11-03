@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,63 +6,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YachtRent Astana - Services</title>
 
-    <!-- Bootstrap first -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Team CSS AFTER Bootstrap so our common design stays the same -->
+
+    <!-- Original team styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/yermek-assignment5.css">
 
+    <!-- Restore selected theme before the page renders -->
+    <script>
+        try {
+            if (localStorage.getItem("theme") === "dark") {
+                document.documentElement.classList.add("yr-dark");
+            }
+        } catch (error) {
+            // Light mode is the default.
+        }
+    </script>
+
     <style>
-        /* Assignment 3 only: responsive typography */
+        /* Original responsive typography */
         @media (max-width: 600px) {
             .services-intro h1 { font-size: 2rem; }
             .services-intro p { font-size: .95rem; }
         }
+
         @media (min-width: 601px) and (max-width: 900px) {
             .services-intro h1 { font-size: 2.5rem; }
             .services-intro p { font-size: 1.05rem; }
         }
+
         @media (min-width: 901px) {
             .services-intro h1 { font-size: 2.8rem; }
             .services-intro p { font-size: 1.1rem; }
         }
 
-        /* Task 2: CSS media queries only */
+        /* Original media-query grid */
         .mq-services {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
+
         @media (max-width: 900px) {
-            .mq-services { grid-template-columns: repeat(2, 1fr); }
+            .mq-services {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
+
         @media (max-width: 600px) {
-            .mq-services { grid-template-columns: 1fr; }
+            .mq-services {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* Keep Bootstrap navbar visually identical to team design */
-        #main-header .navbar { padding: 0; }
-        #main-header .navbar-brand { padding: 0; }
-        #main-header .navbar-toggler { border-color: rgba(255,255,255,.5); }
-        #main-header .navbar-toggler-icon { filter: brightness(0) invert(1); }
+        /* Original Bootstrap compatibility */
+        #main-header .navbar {
+            padding: 0;
+        }
 
-        /* Bootstrap cards must fill their grid columns */
-        .bootstrap-card { width: 100% !important; }
+        #main-header .navbar-brand {
+            padding: 0;
+        }
+
+        #main-header .navbar-toggler {
+            border-color: rgba(255,255,255,.5);
+        }
+
+        #main-header .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        .bootstrap-card {
+            width: 100% !important;
+        }
+
+        /* =====================================
+           YERMEK - THEME SWITCHER
+           ===================================== */
+
+        #main-header .yr-theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 16px;
+            padding: 9px 15px;
+            background: transparent;
+            border: 1px solid #64748b;
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color .2s, border-color .2s;
+        }
+
+        #main-header .yr-theme-toggle:hover,
+        #main-header .yr-theme-toggle:focus-visible {
+            background: #334155;
+            border-color: #38bdf8;
+        }
+
+        @media (max-width: 991px) {
+            #main-header .yr-theme-toggle {
+                margin: 12px 0;
+            }
+        }
+
+        /* =====================================
+           DARK MODE
+           ===================================== */
+
+        html.yr-dark body {
+            background: #101b2d;
+            color: #f4f7fc;
+        }
+
+        html.yr-dark #main-header {
+            background: #0b1423;
+        }
+
+        html.yr-dark #main-header .navbar {
+            background: transparent !important;
+            border: none;
+        }
+
+        html.yr-dark #main-header .nav-menu a {
+            color: #f4f7fc !important;
+        }
+
+        html.yr-dark #main-header .nav-menu a:hover {
+            color: #38bdf8 !important;
+        }
+
+        html.yr-dark .services-intro p {
+            color: #c7d4e5;
+        }
+
+        html.yr-dark .a5-panel {
+            color: #f4f7fc;
+        }
+
+        /* Cards */
+        html.yr-dark .service-card,
+        html.yr-dark .a5-info,
+        html.yr-dark .a5-service-tile {
+            background: #223650 !important;
+            color: #f4f7fc !important;
+            border-color: #405774 !important;
+        }
+
+        html.yr-dark .service-card h2,
+        html.yr-dark .service-card p,
+        html.yr-dark .a5-info h3,
+        html.yr-dark .a5-service-tile h3,
+        html.yr-dark .a5-service-tile p {
+            color: #f4f7fc;
+        }
+
+        /* Inputs */
+        html.yr-dark .a5-controls input,
+        html.yr-dark .a5-controls select,
+        html.yr-dark .a5-info input,
+        html.yr-dark .a5-info select {
+            background: #14253c;
+            color: #ffffff;
+            border-color: #7088a1;
+        }
+
+        html.yr-dark .a5-controls input::placeholder {
+            color: #c7d4e5;
+        }
+
+        /* Pricing table */
+        html.yr-dark .price-section table {
+            background: #223650;
+            color: #f4f7fc;
+            border-color: #405774;
+        }
+
+        html.yr-dark .price-section th {
+            background: #152941;
+            color: #ffffff;
+        }
+
+        html.yr-dark .price-section td {
+            border-color: #405774;
+        }
+
+        html.yr-dark .price-section tr:hover {
+            background: #304b69;
+        }
+
+        /* Buttons */
+        html.yr-dark .btn-outline-primary {
+            color: #7dd3fc;
+            border-color: #7dd3fc;
+        }
+
+        html.yr-dark .btn-outline-primary:hover {
+            background: #7dd3fc;
+            color: #0b1423;
+        }
+
+        html.yr-dark .call-to-action {
+            background: #0b1423;
+            color: #ffffff;
+        }
     </style>
 </head>
+
 <body>
 
 <header id="main-header">
     <nav class="navbar navbar-expand-lg navigation" aria-label="Main navigation">
-        <a href="index.html" class="logo navbar-brand">Yacht<span>Rent</span></a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#mainMenu" aria-controls="mainMenu"
-                aria-expanded="false" aria-label="Toggle navigation">
+        <a href="index.html" class="logo navbar-brand">
+            Yacht<span>Rent</span>
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainMenu"
+                aria-controls="mainMenu"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse nav-menu" id="mainMenu">
+
             <div class="ms-lg-auto d-lg-flex gap-lg-4">
                 <a href="index.html">Home</a>
                 <a href="cars.html">Yachts</a>
@@ -70,11 +246,22 @@
                 <a href="booking.html">Booking</a>
                 <a href="contacts.html">Contacts</a>
             </div>
+
+            <!-- New theme switcher -->
+            <button type="button"
+                    id="yr-theme-toggle"
+                    class="yr-theme-toggle"
+                    aria-pressed="false">
+                🌙 Dark mode
+            </button>
+
         </div>
     </nav>
 </header>
 
 <main>
+
+    <!-- Services introduction -->
     <section class="services-intro px-sm-2 px-md-4">
         <h1>Our Services</h1>
         <p>
@@ -82,74 +269,169 @@
             celebrations, group events and special occasions.
         </p>
     </section>
+
     <!-- Assignment 5: interactive service finder -->
-    <section class="a5-panel container py-4" aria-labelledby="a5-services-heading">
-        <h2 id="a5-services-heading">Find Your Perfect Yacht Service</h2>
-        <p>Filter our services, then request a simple trip estimate.</p>
+    <section class="a5-panel container py-4"
+             aria-labelledby="a5-services-heading">
+
+        <h2 id="a5-services-heading">
+            Find Your Perfect Yacht Service
+        </h2>
+
+        <p>
+            Filter our services, then request a simple trip estimate.
+        </p>
+
         <div class="a5-controls">
-            <label for="a5-category">Category
-                <select id="a5-category"><option value="all">All services</option><option value="trip">Trips</option><option value="event">Events</option><option value="extra">Extras</option></select>
+
+            <label for="a5-category">
+                Category
+
+                <select id="a5-category">
+                    <option value="all">All services</option>
+                    <option value="trip">Trips</option>
+                    <option value="event">Events</option>
+                    <option value="extra">Extras</option>
+                </select>
             </label>
-            <label for="a5-search">Search
-                <input id="a5-search" type="search" placeholder="Search services">
+
+            <label for="a5-search">
+                Search
+                <input id="a5-search"
+                       type="search"
+                       placeholder="Search services">
             </label>
-            <button type="button" id="a5-reset" class="a5-button">Reset filters</button>
+
+            <button type="button"
+                    id="a5-reset"
+                    class="a5-button">
+                Reset filters
+            </button>
+
         </div>
+
         <p id="a5-count" aria-live="polite"></p>
+
         <div id="a5-results" class="a5-service-grid"></div>
+
         <div class="a5-info">
+
             <h3>Quick trip estimate</h3>
+
             <div id="a5-step-one">
-                <label for="a5-yacht-type">Select package</label>
-                <select id="a5-yacht-type"><option value="rental">Yacht Rental - 120,000 ₸ / day</option><option value="cruise">Luxury Cruise - 150,000 ₸ / day</option></select>
-                <label for="a5-days">Number of days</label>
-                <input id="a5-days" type="number" min="1" max="30" value="1">
-                <button type="button" id="a5-next" class="a5-button">Next</button>
+
+                <label for="a5-yacht-type">
+                    Select package
+                </label>
+
+                <select id="a5-yacht-type">
+                    <option value="rental">
+                        Yacht Rental - 120,000 ₸ / day
+                    </option>
+                    <option value="cruise">
+                        Luxury Cruise - 150,000 ₸ / day
+                    </option>
+                </select>
+
+                <label for="a5-days">
+                    Number of days
+                </label>
+
+                <input id="a5-days"
+                       type="number"
+                       min="1"
+                       max="30"
+                       value="1">
+
+                <button type="button"
+                        id="a5-next"
+                        class="a5-button">
+                    Next
+                </button>
+
             </div>
+
             <div id="a5-step-two" hidden>
+
                 <p id="a5-estimate"></p>
-                <button type="button" id="a5-back" class="a5-button">Back</button>
-                <button type="button" id="a5-confirm" class="a5-button">Confirm Estimate</button>
+
+                <button type="button"
+                        id="a5-back"
+                        class="a5-button">
+                    Back
+                </button>
+
+                <button type="button"
+                        id="a5-confirm"
+                        class="a5-button">
+                    Confirm Estimate
+                </button>
+
             </div>
+
             <p id="a5-form-feedback" aria-live="polite"></p>
+
         </div>
     </section>
 
-    <!-- Task 2: 3 / 2 / 1 cards using CSS media queries only -->
+    <!-- Responsive CSS grid -->
     <section class="services-section">
+
         <div class="mq-services">
+
             <article class="card service-card car-card bootstrap-card">
                 <img src="images/camry.png" alt="Yacht rental service">
                 <h2>Yacht Rental</h2>
                 <p>Rent a comfortable yacht for one day or several days.</p>
-                <a href="booking.html" class="button btn btn-primary">Book Now</a>
+                <a href="booking.html" class="button btn btn-primary">
+                    Book Now
+                </a>
             </article>
 
             <article class="card service-card car-card bootstrap-card">
                 <img src="images/sonata.png" alt="Luxury yacht cruise">
                 <h2>Luxury Cruises</h2>
-                <p>Enjoy a premium yacht trip with beautiful views and professional service.</p>
-                <a href="booking.html" class="button btn btn-primary">Book Now</a>
+                <p>
+                    Enjoy a premium yacht trip with beautiful views
+                    and professional service.
+                </p>
+                <a href="booking.html" class="button btn btn-primary">
+                    Book Now
+                </a>
             </article>
 
             <article class="card service-card car-card bootstrap-card">
                 <img src="images/land-cruiser.png" alt="Yacht for events">
                 <h2>Events & Parties</h2>
-                <p>Celebrate birthdays and special occasions with friends or family.</p>
-                <a href="booking.html" class="button btn btn-primary">Book Now</a>
+                <p>
+                    Celebrate birthdays and special occasions
+                    with friends or family.
+                </p>
+                <a href="booking.html" class="button btn btn-primary">
+                    Book Now
+                </a>
             </article>
+
         </div>
     </section>
 
-    <!-- Task 3: Bootstrap 2-column grid -->
+    <!-- Bootstrap 2-column grid -->
     <section class="container py-4 py-lg-5">
+
         <div class="row g-4">
+
             <div class="col-12 col-md-6 col-lg-6">
                 <article class="card service-card car-card bootstrap-card h-100">
                     <img src="images/rav4.png" alt="Captain service">
                     <h2>Captain Service</h2>
-                    <p>A professional captain will make your yacht trip safe and comfortable.</p>
-                    <a href="contacts.html" class="button btn btn-outline-primary btn-sm">Learn More</a>
+                    <p>
+                        A professional captain will make your
+                        yacht trip safe and comfortable.
+                    </p>
+                    <a href="contacts.html"
+                       class="button btn btn-outline-primary btn-sm">
+                        Learn More
+                    </a>
                 </article>
             </div>
 
@@ -157,22 +439,36 @@
                 <article class="card service-card car-card bootstrap-card h-100">
                     <img src="images/tucson.png" alt="Yacht preparation">
                     <h2>Yacht Preparation</h2>
-                    <p>We prepare the yacht before your trip and make sure everything is ready.</p>
-                    <a href="contacts.html" class="button btn btn-secondary btn-sm">Details</a>
+                    <p>
+                        We prepare the yacht before your trip
+                        and make sure everything is ready.
+                    </p>
+                    <a href="contacts.html"
+                       class="button btn btn-secondary btn-sm">
+                        Details
+                    </a>
                 </article>
             </div>
+
         </div>
     </section>
 
-    <!-- Task 3 + 8: Bootstrap 3-column grid + cards -->
+    <!-- Bootstrap 3-column grid -->
     <section class="container py-4 py-lg-5">
+
         <div class="row g-4">
+
             <div class="col-12 col-sm-6 col-lg-4">
                 <article class="card service-card car-card bootstrap-card h-100">
                     <img src="images/k5.png" alt="Additional yacht services">
                     <h2>Additional Services</h2>
-                    <p>Decorations, food, equipment and other options for your trip.</p>
-                    <a href="contacts.html" class="button btn btn-primary">Contact Us</a>
+                    <p>
+                        Decorations, food, equipment and
+                        other options for your trip.
+                    </p>
+                    <a href="contacts.html" class="button btn btn-primary">
+                        Contact Us
+                    </a>
                 </article>
             </div>
 
@@ -180,8 +476,12 @@
                 <article class="card service-card car-card bootstrap-card h-100">
                     <img src="images/main.png" alt="Private yacht trip">
                     <h2>Private Trips</h2>
-                    <p>Comfortable private journeys for families and friends.</p>
-                    <a href="booking.html" class="button btn btn-primary btn-lg">Book Now</a>
+                    <p>
+                        Comfortable private journeys for families and friends.
+                    </p>
+                    <a href="booking.html" class="button btn btn-primary btn-lg">
+                        Book Now
+                    </a>
                 </article>
             </div>
 
@@ -189,74 +489,84 @@
                 <article class="card service-card car-card bootstrap-card h-100">
                     <img src="images/camry.png" alt="Group yacht trip">
                     <h2>Group Charter</h2>
-                    <p>A yacht option for meetings, celebrations and group journeys.</p>
-                    <a href="booking.html" class="button btn btn-outline-primary">Reserve</a>
+                    <p>
+                        A yacht option for meetings, celebrations
+                        and group journeys.
+                    </p>
+                    <a href="booking.html"
+                       class="button btn btn-outline-primary">
+                        Reserve
+                    </a>
                 </article>
             </div>
+
         </div>
     </section>
 
+    <!-- Services pricing -->
     <section class="price-section mt-lg-4 px-sm-2">
+
         <h2>Services and Prices</h2>
+
         <div class="table-container table-responsive">
+
             <table>
                 <thead>
-                    <tr><th>Service</th><th>Description</th><th>Price</th></tr>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
                 </thead>
+
                 <tbody>
-                    <tr><td>Yacht Rental</td><td>Daily yacht rental</td><td>From 120,000 ₸ / day</td></tr>
-                    <tr><td>Luxury Cruise</td><td>Premium yacht trip</td><td>From 150,000 ₸ / day</td></tr>
-                    <tr><td>Events & Parties</td><td>Yacht rental for celebrations</td><td>Contact us</td></tr>
-                    <tr><td>Captain Service</td><td>Professional captain for your trip</td><td>Contact us</td></tr>
+                    <tr>
+                        <td>Yacht Rental</td>
+                        <td>Daily yacht rental</td>
+                        <td>From 120,000 ₸ / day</td>
+                    </tr>
+                    <tr>
+                        <td>Luxury Cruise</td>
+                        <td>Premium yacht trip</td>
+                        <td>From 150,000 ₸ / day</td>
+                    </tr>
+                    <tr>
+                        <td>Events & Parties</td>
+                        <td>Yacht rental for celebrations</td>
+                        <td>Contact us</td>
+                    </tr>
+                    <tr>
+                        <td>Captain Service</td>
+                        <td>Professional captain for your trip</td>
+                        <td>Contact us</td>
+                    </tr>
                 </tbody>
             </table>
+
         </div>
     </section>
 
-    <!-- Task 6 -->
+    <!-- Call to action -->
     <section class="call-to-action">
+
         <h2>Choose Your Service</h2>
-        <p>Choose your yacht service and make your booking today.</p>
+
+        <p>
+            Choose your yacht service and make your booking today.
+        </p>
+
         <div class="btn-group" role="group" aria-label="Service actions">
             <a href="booking.html" class="button btn btn-primary">Book</a>
             <a href="cars.html" class="button btn btn-secondary">Yachts</a>
-            <a href="contacts.html" class="button btn btn-outline-primary">Contact</a>
+            <a href="contacts.html" class="button btn btn-outline-primary">
+                Contact
+            </a>
         </div>
+
     </section>
-    <section class="container py-5">
-        <h2 class="text-center mb-4">
-            Frequently Asked Questions
-        </h2>
 
-        <div class="faq">
-            <button class="faq-question"
-                    aria-expanded="false">
-                How can I book a yacht?
-            </button>
-            <div class="faq-answer">
-                <p>You can book a yacht using
-                our booking page.</p>
-            </div>
+    <!-- FAQ removed -->
 
-            <button class="faq-question"
-                    aria-expanded="false">
-                Is a captain included?
-            </button>
-            <div class="faq-answer">
-                <p>Captain services are
-                available upon request.</p>
-            </div>
-
-            <button class="faq-question"
-                    aria-expanded="false">
-                Can I cancel my booking?
-            </button>
-            <div class="faq-answer">
-                <p>Please contact our team
-                for cancellation details.</p>
-            </div>
-        </div>
-    </section>
 </main>
 
 <footer>
@@ -264,8 +574,54 @@
     <p>Team Members: Askar, Yermek, Nurislam</p>
 </footer>
 
+<!-- Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Original team JavaScript -->
 <script src="js/script.js"></script>
 <script src="js/yermek-assignment5.js" defer></script>
+
+<!-- Independent theme controller -->
+<script>
+(function () {
+    const button = document.getElementById("yr-theme-toggle");
+
+    function applyTheme(isDark) {
+        document.documentElement.classList.toggle("yr-dark", isDark);
+        document.body.classList.toggle("dark-mode", isDark);
+
+        button.textContent = isDark
+            ? "☀️ Light mode"
+            : "🌙 Dark mode";
+
+        button.setAttribute("aria-pressed", String(isDark));
+    }
+
+    applyTheme(document.documentElement.classList.contains("yr-dark"));
+
+    button.addEventListener("click", function () {
+        const nextIsDark =
+            !document.documentElement.classList.contains("yr-dark");
+
+        applyTheme(nextIsDark);
+
+        try {
+            localStorage.setItem(
+                "theme",
+                nextIsDark ? "dark" : "light"
+            );
+        } catch (error) {
+            // The switch still works without persistent storage.
+        }
+    });
+
+    window.addEventListener("storage", function (event) {
+        if (event.key === "theme") {
+            applyTheme(event.newValue === "dark");
+        }
+    });
+})();
+</script>
+
 </body>
 </html>
