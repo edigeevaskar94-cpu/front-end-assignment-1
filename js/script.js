@@ -717,13 +717,6 @@ $(document).ready(function () {
     });
 });
 
-
-
-
-
-
-
-
 $(document).ready(function () {
    
     if (localStorage.getItem('theme') === 'dark') {

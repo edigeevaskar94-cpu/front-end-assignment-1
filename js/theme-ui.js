@@ -217,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
         tools.appendChild(themeButton);
     }
 
-    // Add profile icon if it doesn't already exist.
     if (!menu.querySelector('a[href="profile.html"]')) {
         const profileLink = document.createElement("a");
 
