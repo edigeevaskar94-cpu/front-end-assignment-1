@@ -1,0 +1,988 @@
+
+/* =========================================
+   YACHTRENT - SHARED LIGHT / DARK THEME
+   ========================================= */
+
+/* =========================================
+   1. NAVBAR THEME BUTTONS
+   ========================================= */
+
+#main-header .yr-theme-toggle,
+#main-header #themeToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 15px;
+    margin-left: 16px;
+    border: 1px solid #64748b;
+    border-radius: 25px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s;
+}
+
+#main-header .yr-theme-toggle:hover,
+#main-header .yr-theme-toggle:focus-visible,
+#main-header #themeToggle:hover,
+#main-header #themeToggle:focus-visible {
+    background: #334155;
+    color: #ffffff;
+    border-color: #38bdf8;
+}
+
+@media (max-width: 991px) {
+    #main-header .yr-theme-toggle,
+    #main-header #themeToggle {
+        margin: 12px 0;
+    }
+}
+
+/* =========================================
+   2. DARK PAGE BACKGROUND
+   ========================================= */
+
+body.dark-mode {
+    background: #101b2d;
+    color: #f4f7fc;
+}
+
+/* =========================================
+   3. NAVBAR
+   ========================================= */
+
+body.dark-mode #main-header {
+    background: #0b1423;
+}
+
+body.dark-mode #main-header .navbar {
+    background: transparent !important;
+    border: none;
+}
+
+body.dark-mode #main-header .nav-menu a {
+    color: #f4f7fc !important;
+}
+
+body.dark-mode #main-header .nav-menu a:hover {
+    color: #38bdf8 !important;
+}
+
+/* =========================================
+   4. PAGE INTRO SECTIONS
+   ========================================= */
+
+body.dark-mode .fleet-intro,
+body.dark-mode .services-intro,
+body.dark-mode .booking-intro {
+    color: #f4f7fc;
+}
+
+body.dark-mode .fleet-intro p,
+body.dark-mode .services-intro p,
+body.dark-mode .booking-intro p {
+    color: #c7d4e5;
+}
+
+/* =========================================
+   5. CARDS
+   ========================================= */
+
+body.dark-mode .about-card,
+body.dark-mode .team-card,
+body.dark-mode .service-card,
+body.dark-mode .booking-info-card,
+body.dark-mode .booking-form-card,
+body.dark-mode .rental-prices,
+body.dark-mode .a5-info,
+body.dark-mode .a5-service-tile {
+    background: #223650 !important;
+    color: #f4f7fc !important;
+    border-color: #405774 !important;
+    box-shadow: none;
+}
+
+body.dark-mode .about-card h2,
+body.dark-mode .team-card h3,
+body.dark-mode .service-card h2,
+body.dark-mode .booking-info-card h2,
+body.dark-mode .booking-form-card h2,
+body.dark-mode .rental-prices h2,
+body.dark-mode .a5-info h3,
+body.dark-mode .a5-service-tile h3 {
+    color: #f4f7fc;
+}
+
+body.dark-mode .about-card p,
+body.dark-mode .team-card p,
+body.dark-mode .service-card p,
+body.dark-mode .booking-info-card p,
+body.dark-mode .booking-info-card li,
+body.dark-mode .a5-info p,
+body.dark-mode .a5-service-tile p {
+    color: #e2e8f0;
+}
+
+/* =========================================
+   6. ASSIGNMENT 5 SECTIONS
+   ========================================= */
+
+body.dark-mode .a5-panel,
+body.dark-mode .popular-cars,
+body.dark-mode .gallery-section {
+    color: #f4f7fc;
+}
+
+/* Rating stars */
+body.dark-mode .a5-star {
+    color: #98a8ba;
+}
+
+body.dark-mode .a5-star.is-active {
+    color: #f4af15;
+}
+
+/* =========================================
+   7. INPUTS AND FORMS
+   ========================================= */
+
+body.dark-mode .a5-controls input,
+body.dark-mode .a5-controls select,
+body.dark-mode .a5-info input,
+body.dark-mode .a5-info select,
+body.dark-mode .booking-form-card input,
+body.dark-mode .booking-form-card select,
+body.dark-mode .booking-form-card textarea {
+    background: #14253c !important;
+    color: #ffffff !important;
+    border-color: #7088a1 !important;
+}
+
+body.dark-mode .booking-form-card input,
+body.dark-mode .booking-form-card select {
+    color-scheme: dark;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #b8c7d9 !important;
+}
+
+body.dark-mode .booking-form-card select option {
+    background: #14253c;
+    color: #ffffff;
+}
+
+body.dark-mode .booking-form-card input:focus,
+body.dark-mode .booking-form-card select:focus,
+body.dark-mode .booking-form-card textarea:focus {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 3px rgba(56,189,248,.15);
+}
+
+body.dark-mode .booking-step legend,
+body.dark-mode .form-group label {
+    color: #f4f7fc;
+}
+
+/* =========================================
+   8. PRICING TABLE
+   ========================================= */
+
+body.dark-mode .price-section table {
+    background: #223650;
+    color: #f4f7fc;
+    border-color: #405774;
+}
+
+body.dark-mode .price-section th {
+    background: #152941;
+    color: #ffffff;
+}
+
+body.dark-mode .price-section td {
+    border-color: #405774;
+}
+
+body.dark-mode .price-section tr:hover {
+    background: #304b69;
+}
+
+/* =========================================
+   9. BOOKING PROGRESS
+   ========================================= */
+
+body.dark-mode #stepIndicator {
+    color: #7dd3fc !important;
+}
+
+body.dark-mode .progress {
+    background: #334155;
+}
+
+body.dark-mode #bookingSummary {
+    background: #172f4b !important;
+    border-color: #405774 !important;
+    color: #f4f7fc;
+}
+
+body.dark-mode #bookingSummary p {
+    color: #dbeafe;
+}
+
+/* =========================================
+   10. RENTAL PRICES
+   ========================================= */
+
+body.dark-mode .rental-prices p {
+    color: #c7d4e5;
+}
+
+body.dark-mode .rental-prices .list-group-item {
+    background: #172f4b;
+    color: #f4f7fc;
+    border-color: #405774;
+}
+
+/* =========================================
+   11. BUTTONS
+   ========================================= */
+
+body.dark-mode .btn-outline-primary {
+    color: #7dd3fc;
+    border-color: #7dd3fc;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+    background: #7dd3fc;
+    color: #0b1423;
+}
+
+/* =========================================
+   12. OTHER ELEMENTS
+   ========================================= */
+
+body.dark-mode .text-muted {
+    color: #c7d4e5 !important;
+}
+
+body.dark-mode .call-to-action {
+    background: #0b1423;
+    color: #ffffff;
+}
+
+body.dark-mode #postBookingSection {
+    background: #223650 !important;
+    color: #f4f7fc;
+}
+
+body.dark-mode .interactive-experience {
+    background: #172f4b !important;
+    color: #f4f7fc !important;
+    border-color: #405774 !important;
+}
+
+body.dark-mode .interactive-experience h4 {
+    color: #f4f7fc;
+}
+
+
+/* =========================================
+   BOOKING - POPUP YACHT GAME
+   ========================================= */
+
+/* Full-screen popup overlay */
+#postBookingSection.booking-game-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    overflow-y: auto;
+
+    background: rgba(15, 23, 42, 0.75) !important;
+}
+
+/* Keep the popup hidden until booking is submitted */
+#postBookingSection.booking-game-overlay[hidden] {
+    display: none !important;
+}
+
+/* Popup window */
+#postBookingSection .booking-game-dialog {
+    position: relative;
+
+    width: 100%;
+    max-width: 620px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+
+    padding: 30px;
+    border-radius: 18px;
+
+    background: #ffffff;
+    color: #17243b;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+/* Close button */
+#postBookingSection .booking-game-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+
+    border: none;
+    background: transparent;
+    color: inherit;
+
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#postBookingSection .booking-game-close:hover {
+    color: #0284c7;
+}
+
+/* Dark mode */
+body.dark-mode #postBookingSection.booking-game-overlay {
+    background: rgba(4, 11, 22, 0.85) !important;
+}
+
+body.dark-mode #postBookingSection .booking-game-dialog {
+    background: #223650;
+    color: #f4f7fc;
+}
+
+/* Mobile popup */
+@media (max-width: 600px) {
+    #postBookingSection .booking-game-dialog {
+        padding: 25px 15px;
+    }
+}
+
+
+
+/* =========================================
+   INDEX - CLEAN PREMIUM NAVBAR
+   ========================================= */
+
+.index-page #main-header {
+    padding: 16px 5%;
+}
+
+.index-page #main-header .navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* LOGO AND CLOCK AS ONE GROUP */
+.index-page #main-header .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-shrink: 0;
+}
+
+.index-page #main-header .brand-group .logo {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+/* CLOCK */
+.index-page #main-header .nav-clock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 3px;
+    margin: 0;
+    padding: 0;
+
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.index-page #main-header .nav-clock #currentDate {
+    color: #94a3b8 !important;
+    font-size: 11px !important;
+    font-weight: 500;
+    letter-spacing: .2px;
+}
+
+.index-page #main-header .nav-clock #currentTime {
+    color: #f8fafc !important;
+    font-size: 18px !important;
+    font-weight: 600;
+    letter-spacing: .4px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* RIGHT NAVIGATION */
+.index-page #indexMenu {
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0;
+}
+
+.index-page #indexMenu .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    white-space: nowrap;
+}
+
+.index-page #indexMenu .nav-links a {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* THEME AND PROFILE */
+.index-page #indexMenu .nav-tools {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-left: 28px;
+    flex-shrink: 0;
+}
+
+.index-page #indexMenu #themeToggle {
+    margin: 0 !important;
+}
+
+.index-page #indexMenu #profileOpen {
+    flex-shrink: 0;
+}
+
+/* MEDIUM DESKTOP */
+@media (min-width: 1200px) and (max-width: 1450px) {
+    .index-page #main-header .brand-group {
+        gap: 14px;
+    }
+
+    .index-page #indexMenu .nav-links {
+        gap: 13px;
+    }
+
+    .index-page #indexMenu .nav-links a {
+        font-size: 14px;
+    }
+
+    .index-page #indexMenu .nav-tools {
+        margin-left: 14px;
+        gap: 10px;
+    }
+}
+
+/* TABLET / COLLAPSED MENU */
+@media (max-width: 1199.98px) {
+    .index-page #main-header .navigation {
+        flex-wrap: wrap;
+    }
+
+    .index-page #indexMenu {
+        width: 100%;
+    }
+
+    .index-page #indexMenu .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 0;
+    }
+
+    .index-page #indexMenu .nav-links a {
+        padding: 8px 0;
+    }
+
+    .index-page #indexMenu .nav-tools {
+        justify-content: center;
+        margin: 12px 0;
+    }
+}
+
+/* SMALL PHONES */
+@media (max-width: 600px) {
+    .index-page #main-header .brand-group {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .index-page #main-header .nav-clock {
+        margin: 0;
+    }
+
+    .index-page #main-header .nav-clock #currentDate {
+        font-size: 10px !important;
+    }
+
+    .index-page #main-header .nav-clock #currentTime {
+        font-size: 16px !important;
+    }
+}
+
+
+
+
+/* Profile icon without the artificial circle */
+
+#profileOpen {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+    padding: 0;
+
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+#profileOpen img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* =========================================
+   INDEX - DARK MODE
+   ========================================= */
+
+body.dark-mode {
+    background-color: #101b2d !important;
+}
+
+body.dark-mode .hero {
+    background: #172f4b;
+    color: #f4f7fc;
+}
+
+body.dark-mode .hero h1,
+body.dark-mode .hero p {
+    color: #f4f7fc;
+}
+
+body.dark-mode .advantages,
+body.dark-mode .popular-cars,
+body.dark-mode .gallery-section {
+    color: #f4f7fc;
+}
+
+body.dark-mode .advantages .card,
+body.dark-mode .popular-cars .card,
+body.dark-mode .fleet .car-card {
+    background: #223650 !important;
+    color: #f4f7fc !important;
+    border-color: #405774 !important;
+}
+
+body.dark-mode .fleet .car-card ul,
+body.dark-mode .fleet .car-card p {
+    color: #e2e8f0;
+}
+
+/* =========================================
+   CARS - DARK MODE
+   ========================================= */
+
+body.dark-mode .sidebar {
+    background: #172f4b;
+    color: #f4f7fc;
+}
+
+body.dark-mode .sidebar a {
+    color: #dbeafe;
+}
+
+body.dark-mode .featured-yacht,
+body.dark-mode .yacht-scene {
+    background: #223650;
+    color: #f4f7fc;
+}
+
+body.dark-mode .yacht-rating,
+body.dark-mode .gallery-section {
+    color: #f4f7fc;
+}
+
+body.dark-mode #yachtSearch,
+body.dark-mode #categoryFilter,
+body.dark-mode #priceFilter {
+    background: #14253c;
+    color: #ffffff;
+    border-color: #7088a1;
+}
+
+/* =========================================
+   FAQ - BOTH THEMES
+   ========================================= */
+
+.faq-question {
+    border-radius: 8px;
+}
+
+body.dark-mode .faq-question {
+    background: #223650;
+    color: #f4f7fc;
+    border-color: #405774;
+}
+
+body.dark-mode .faq-answer {
+    color: #e2e8f0;
+}
+
+body.dark-mode .faq-item {
+    border-color: #405774;
+}
+
+/* =========================================
+   CONTACTS - DARK MODE
+   ========================================= */
+
+body.dark-mode .contacts-intro p {
+    color: #c7d4e5;
+}
+
+body.dark-mode .contact-info-card,
+body.dark-mode .contact-form-card {
+    background: #223650 !important;
+    color: #f4f7fc !important;
+    border-color: #405774 !important;
+}
+
+body.dark-mode .contact-info-card h2,
+body.dark-mode .contact-form-card h2,
+body.dark-mode .contact-form-card label {
+    color: #f4f7fc;
+}
+
+body.dark-mode .contact-form-card input,
+body.dark-mode .contact-form-card textarea {
+    background: #14253c !important;
+    color: #ffffff !important;
+    border-color: #7088a1 !important;
+}
+
+
+.yr-profile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 21000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+    background: rgba(15,23,42,.75);
+}
+
+.yr-profile-overlay[hidden],
+.yr-profile-login[hidden],
+.yr-profile-dashboard[hidden] {
+    display: none !important;
+}
+
+.yr-profile-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 30px;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #17243b;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+
+.yr-profile-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.yr-profile-dialog input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #17243b;
+}
+
+body.dark-mode .yr-profile-dialog {
+    background: #223650;
+    color: #f4f7fc;
+}
+
+body.dark-mode .yr-profile-dialog input {
+    background: #14253c;
+    color: #ffffff;
+    border-color: #7088a1;
+}
+
+
+.index-page .faq-item {
+    margin: 0 0 12px;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.index-page .faq-question {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 14px 18px;
+
+    background: #f8fafc;
+    color: #17243b;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.index-page .faq-answer {
+    border: none;
+    background: transparent;
+}
+
+.index-page .faq-answer p {
+    margin: 0;
+    padding: 12px 18px;
+}
+
+body.dark-mode.index-page .faq-question {
+    background: #223650;
+    color: #f4f7fc;
+    border-color: #405774;
+}
+
+
+
+/* =========================================
+   PROFILE PAGE
+   ========================================= */
+
+.profile-page .yr-account-section {
+    max-width: 850px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+.profile-page .yr-account-card {
+    padding: 28px;
+    background: #ffffff;
+    color: #17243b;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.05);
+}
+
+.profile-page .yr-account-avatar {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin-bottom: 14px;
+}
+
+.profile-page .yr-account-card label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.profile-page .yr-account-card input {
+    width: 100%;
+    padding: 11px 12px;
+
+    background: #ffffff;
+    color: #17243b;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.profile-page .yr-account-card input:focus {
+    outline: 2px solid #38bdf8;
+    outline-offset: 1px;
+}
+
+.profile-page .yr-account-card [hidden] {
+    display: none !important;
+}
+
+body.dark-mode.profile-page .yr-account-card {
+    background: #223650;
+    color: #f4f7fc;
+    border-color: #405774;
+}
+
+body.dark-mode.profile-page .yr-account-card input {
+    background: #14253c;
+    color: #ffffff;
+    border-color: #7088a1;
+}
+
+@media (max-width: 600px) {
+    .profile-page .yr-account-card {
+        padding: 20px;
+    }
+}
+
+/* Booking history */
+
+.yr-booking-card {
+    padding: 18px;
+    margin-bottom: 14px;
+    border: 1px solid #dbe4ee;
+    border-radius: 12px;
+    background: #f7fafc;
+    color: #17243b;
+}
+
+.yr-booking-card h3 {
+    margin-bottom: 10px;
+}
+
+.yr-booking-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.yr-booking-actions .btn {
+    max-width: 100%;
+}
+
+/* Review popup */
+
+.yr-review-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    background: rgba(8, 15, 28, 0.75);
+}
+
+.yr-review-overlay[hidden] {
+    display: none !important;
+}
+
+.yr-review-dialog {
+    width: 100%;
+    max-width: 460px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #17243b;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.yr-review-stars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.yr-review-stars button {
+    padding: 0 5px;
+    border: 0;
+    background: transparent;
+    color: #a1aab7;
+    font-size: 38px;
+    cursor: pointer;
+}
+
+.yr-review-stars button:hover,
+.yr-review-stars button.is-active {
+    color: #f4af15;
+}
+
+.yr-review-stars button:focus-visible {
+    outline: 2px solid #0284c7;
+    border-radius: 6px;
+}
+
+#bookingReviewFeedback {
+    color: #dc3545;
+}
+
+/* Dark mode */
+
+body.dark-mode .yr-booking-card {
+    background: #1d304a;
+    color: #f4f7fc;
+    border-color: #405774;
+}
+
+body.dark-mode .yr-review-dialog {
+    background: #223650;
+    color: #f4f7fc;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .yr-booking-card {
+        padding: 15px;
+    }
+
+    .yr-review-dialog {
+        padding: 20px;
+    }
+
+    .yr-booking-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .yr-booking-actions .btn {
+        width: 100%;
+    }
+}

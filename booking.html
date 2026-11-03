@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/nurislam5.css">
+
+    <!-- Shared Light/Dark Theme -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 
@@ -35,7 +40,7 @@
                 <a href="booking.html" aria-current="page">Booking</a>
                 <a href="contacts.html">Contacts</a>
 
-                <!-- Dark/Light Mode Switcher -->
+                <!-- Original Dark/Light Mode Switcher -->
                 <button id="themeToggle" class="btn btn-sm btn-outline-dark ms-lg-3 mt-2 mt-lg-0">🌙 Dark</button>
             </div>
         </div>
@@ -169,7 +174,11 @@
                                 <div id="bookingSummary" class="booking-summary p-3 mb-3"></div>
                             </fieldset>
 
-                            <p id="bookingFeedback" class="booking-feedback text-danger fw-semibold" role="status" aria-live="polite"></p>
+                            <p id="bookingFeedback"
+                                class="booking-feedback fw-semibold"
+                                style="color: #dc3545;"
+                                role="status"
+                                aria-live="polite"></p>
 
                             <div class="d-flex flex-wrap gap-2 mt-3">
                                 <button type="button" id="backBtn" class="btn btn-secondary" hidden>
@@ -209,43 +218,104 @@
             </a>
         </div>
     </section>
-<!-- Брондау аяқталғаннан кейін ғана шығатын интерактивті бөлім -->
-<div id="postBookingSection" class="mt-4 p-4 bg-white shadow-sm rounded text-center" hidden>
-    <h3 class="fw-bold text-success mb-3">🎉 Booking Confirmed Successfully!</h3>
-    
-    <!-- Interactive Yacht Experience -->
-    <div class="interactive-experience p-3 bg-light rounded">
-        <h4 class="fw-bold">Interactive Yacht Experience</h4>
-        <p class="text-muted small">Try our yacht animation and sound effects!</p>
-        
-        <!-- Animation Box -->
-        <div class="yacht-viewport position-relative overflow-hidden rounded mb-3" style="height: 150px; background: linear-gradient(to bottom, #7dd3fc, #0284c7);">
-            <div id="animatedYacht" class="position-absolute" style="bottom: 15px; left: 10px; transition: left 2s ease-in-out;">
-                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 18L4 21H20L22 18H2Z" fill="#0284c7"/>
-                    <path d="M11 3L3 15H21L11 3Z" fill="#f8fafc"/>
-                    <path d="M12 4V14H19L12 4Z" fill="#e2e8f0"/>
-                    <path d="M12 2V14H10V2H12Z" fill="#334155"/>
-                </svg>
+
+
+    <!-- POPUP GAME AFTER BOOKING -->
+    <div id="postBookingSection"
+        class="booking-game-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="bookingGameTitle"
+        hidden>
+
+        <div class="booking-game-dialog text-center">
+
+            <!-- Close popup -->
+            <button type="button"
+                    id="closeBookingGame"
+                    class="booking-game-close"
+                    aria-label="Close game">
+                &times;
+            </button>
+
+            <h3 id="bookingGameTitle"
+                class="fw-bold text-success mb-3">
+                🎉 Booking Confirmed Successfully!
+            </h3>
+
+            <p>
+                Your booking request has been received!
+                Enjoy a short yacht journey.
+            </p>
+
+            <!-- Interactive game -->
+            <div class="interactive-experience p-3 bg-light rounded">
+
+                <h4 class="fw-bold">
+                    Interactive Yacht Experience
+                </h4>
+
+                <p class="text-muted small">
+                    Try our yacht animation and sound effects!
+                </p>
+
+                <!-- Animation viewport -->
+                <div class="yacht-viewport position-relative overflow-hidden rounded mb-3"
+                    style="height: 150px; background: linear-gradient(to bottom, #7dd3fc, #0284c7);">
+
+                    <!-- Animated yacht -->
+                    <div id="animatedYacht"
+                        class="position-absolute"
+                        style="bottom: 15px; left: 10px;">
+
+                        <svg width="50"
+                            height="50"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+
+                            <path d="M2 18L4 21H20L22 18H2Z"
+                                fill="#0284c7"/>
+
+                            <path d="M11 3L3 15H21L11 3Z"
+                                fill="#f8fafc"/>
+
+                            <path d="M12 4V14H19L12 4Z"
+                                fill="#e2e8f0"/>
+
+                            <path d="M12 2V14H10V2H12Z"
+                                fill="#334155"/>
+                        </svg>
+                    </div>
+
+                    <!-- Water -->
+                    <div class="position-absolute w-100 bottom-0"
+                        style="height: 20px; background: #0369a1;">
+                    </div>
+
+                </div>
+
+                <!-- Controls -->
+                <div class="d-flex justify-content-center gap-2 mb-2">
+
+                    <button type="button"
+                            id="startJourneyBtn"
+                            class="btn btn-primary btn-sm">
+                        ⛵ Start Journey
+                    </button>
+
+                </div>
+
+                <p id="journeyStatus"
+                class="text-muted small mb-0"
+                aria-live="polite">
+                    Ready for your journey!
+                </p>
+
             </div>
-            <div class="position-absolute w-100 bottom-0" style="height: 20px; background: #0369a1;"></div>
         </div>
-
-        <div class="d-flex justify-content-center gap-2 mb-2">
-            <button id="startJourneyBtn" class="btn btn-primary btn-sm">Start Journey</button>
-            <button id="playSoundBtn" class="btn btn-secondary btn-sm">Play Sound</button>
-        </div>
-        <p id="journeyStatus" class="text-muted small mb-0">Ready for your journey!</p>
     </div>
-</div>
-
-        <div class="d-flex justify-content-center gap-2 mb-2">
-            <button id="startJourneyBtn" class="btn btn-primary btn-sm">Start Journey</button>
-            <button id="playSoundBtn" class="btn btn-secondary btn-sm">Play Sound</button>
-        </div>
-        <p id="journeyStatus" class="text-muted small mb-0">Ready for your journey!</p>
-    </div>
-</div>
+    
 </main>
 
 <footer>
@@ -253,9 +323,142 @@
     <p>Team Members: Askar, Yermek, Nurislam</p>
 </footer>
 
-<!-- Task 0: jQuery CDN and script -->
+<!-- Original scripts unchanged -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const popup = document.getElementById("postBookingSection");
+    const closeButton = document.getElementById("closeBookingGame");
+
+    let audioContext = null;
+
+    // Prepare sound when the user presses Start Journey
+    function prepareAudio() {
+        const AudioContextType =
+            window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContextType) return;
+
+        try {
+            if (!audioContext) {
+                audioContext = new AudioContextType();
+            }
+
+            const result = audioContext.resume();
+
+            if (result && typeof result.catch === "function") {
+                result.catch(function () {});
+            }
+        } catch (error) {
+            console.warn("Audio unavailable:", error);
+        }
+    }
+
+    // Play a short success sound after the yacht arrives
+    function playFinishSound() {
+        if (!audioContext || audioContext.state !== "running") {
+            return;
+        }
+
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        const now = audioContext.currentTime;
+
+        oscillator.type = "sine";
+
+        oscillator.frequency.setValueAtTime(523.25, now);
+        oscillator.frequency.setValueAtTime(659.25, now + 0.15);
+        oscillator.frequency.setValueAtTime(783.99, now + 0.30);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.exponentialRampToValueAtTime(0.08, now + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.60);
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start(now);
+        oscillator.stop(now + 0.65);
+    }
+
+    // Listen to the existing Start Journey button
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest("#startJourneyBtn")) {
+            return;
+        }
+
+        // Unlock audio during the user's click
+        prepareAudio();
+
+        // Wait until the existing jQuery animation is registered
+        setTimeout(function () {
+            if (!window.jQuery) return;
+
+            const yacht = window.jQuery("#animatedYacht");
+
+            if (!yacht.length) return;
+
+            // Run sound after the animation queue finishes
+            yacht.promise("fx").done(function () {
+                const status = document.getElementById("journeyStatus");
+
+                if (
+                    status &&
+                    status.textContent.includes("Journey completed")
+                ) {
+                    playFinishSound();
+                }
+            });
+        }, 0);
+    });
+
+    // Close popup and reset the entire booking flow
+    function closePopup() {
+        if (!popup) return;
+
+        const form = document.getElementById("bookingForm");
+
+        if (form) {
+            form.reset();
+        }
+
+        popup.hidden = true;
+        popup.style.display = "";
+
+        // Reload resets the internal step counter to Step 1
+        window.location.reload();
+    }
+
+    if (closeButton) {
+        closeButton.addEventListener("click", closePopup);
+    }
+
+    // Close by clicking the dark background
+    if (popup) {
+        popup.addEventListener("click", function (event) {
+            if (event.target === popup) {
+                closePopup();
+            }
+        });
+    }
+
+    // Close with Escape
+    document.addEventListener("keydown", function (event) {
+        if (
+            event.key === "Escape" &&
+            popup &&
+            !popup.hidden
+        ) {
+            closePopup();
+        }
+    });
+});
+</script>
+<script src="js/theme-ui.js"></script>
+<script src="js/booking-history.js"></script>
 </body>
 </html>
