@@ -986,3 +986,27 @@ body.dark-mode .yr-review-dialog {
         width: 100%;
     }
 }
+
+body.index-page,
+.index-page #main-header,
+.index-page .hero,
+.index-page .advantages,
+.index-page .popular-cars,
+.index-page .advantages .card,
+.index-page .popular-cars .card,
+.index-page .faq-question,
+.index-page .faq-answer,
+.index-page .call-to-action {
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.a5-service-tile {
+    transition:
+        transform 0.2s ease,
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
+}
