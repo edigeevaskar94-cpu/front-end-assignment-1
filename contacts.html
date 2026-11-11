@@ -67,7 +67,22 @@
                         <ul class="list-unstyled mt-3">
                             <li class="mb-2"><strong>Address:</strong> Mangilik El Avenue, Astana, Kazakhstan</li>
                             <li class="mb-2"><strong>Phone:</strong> +7 (700) 123-45-67</li>
-                            <li class="mb-2"><strong>Email:</strong> info@yachtrent-astana.kz</li>
+                            <li class="mb-2">
+                                <strong>Email:</strong>
+                                <a href="mailto:info@yachtrent-astana.kz">
+                                    info@yachtrent-astana.kz
+                                </a>
+
+                                <button type="button"
+                                        id="copyContactEmail"
+                                        class="btn btn-outline-primary btn-sm ms-2">
+                                    📋 Copy Email
+                                </button>
+
+                                <span id="copyContactEmailStatus"
+                                    class="d-block mt-1"
+                                    role="status"></span>
+                            </li>
                             <li class="mb-2"><strong>Working Hours:</strong> Mon - Sun: 9:00 AM - 8:00 PM</li>
                         </ul>
                     </article>
@@ -121,5 +136,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/theme-ui.js"></script>
+
+<script>
+document.getElementById("copyContactEmail")
+    .addEventListener("click", async function () {
+
+        const email = "info@yachtrent-astana.kz";
+        const status = document.getElementById("copyContactEmailStatus");
+
+        try {
+            await navigator.clipboard.writeText(email);
+
+            status.textContent = "✅ Email copied!";
+            status.style.color = "green";
+
+        } catch (error) {
+            status.textContent = "❌ Failed to copy email.";
+            status.style.color = "red";
+        }
+    });
+</script>
 </body>
 </html>
